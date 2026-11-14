@@ -267,6 +267,7 @@ main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 
       </table>
     </div>
     <p class="muted">*On the Apr–Sep 2024 test leads.</p>
+    <p>Grade B is for leads that fit self-serve now and may need sales later. They score too low for a call today, but 32.6% reached $10K in the test months. They start in self-serve, and a rep looks again after their first order. Signups place a first order about as often as demo requests (32.9% and 35.3%), so many good accounts start in self-serve. The data has no order amounts, so I couldn't test the re-score.</p>
     <div class="tbl">
       <table>
         <thead><tr><th>Lead</th><th>Grade</th><th>Rep line</th></tr></thead>
@@ -317,11 +318,11 @@ main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 
   <section class="block" id="next">
     <h2>Rollout and next tests</h2>
     <p>On the 490, the A cutoff sends 16 leads a month, close to HubSpot's 17. If sales has room for more, lower the cutoff; the ranking doesn't change.</p>
-    <p>The watch list holds self-serve accounts that may grow. Demo requesters and signups place a first order at similar rates (35.3% and 32.9%), so the first order is the signal to look again. The data has no order amounts, so I couldn't test that re-score.</p>
-    <p>A good lead can take 18 months to show, so I'd judge the rollout on first orders within 6 months. In the test months, first orders ranked the two systems the same way $10K did.</p>
+    <p>I'd run both grades side by side and keep HubSpot's grade live until one system clearly wins. A good lead can take 18 months to show, so I'd judge the run on first orders within 6 months. In the test months, first orders ranked the two systems the same way $10K did.</p>
     <ol class="plain">
       <li>Month 1: log both grades, route as today, and ask reps if the rep lines help.</li>
-      <li>Months 2–7: sales works every lead either system sends, about 24 a month. Compare the leads only one system sends. In the test months, waterfall-only leads ordered 56.8% of the time, HubSpot-only 30.4%.</li>
+      <li>Months 2–7: sales works every lead either system sends, about 24 a month. Compare first-order rates on the leads only one system sends. Six test months gave 74 waterfall-only and 56 HubSpot-only leads, which ordered at 56.8% and 30.4%.</li>
+      <li>Retire HubSpot's grade only if the waterfall-only leads still order at a clearly higher rate, one that holds up when the leads are resampled. If the gap is small, keep both for another quarter. After that, HubSpot's score can keep running in the background as a benchmark for each retrain.</li>
       <li>Give a random 1 in 5 B leads a rep call, to measure what a rep adds.</li>
       <li>Add ad platform once its leads have outcomes. It's filled on 17% of the 490 and no past leads.</li>
     </ol>
@@ -371,16 +372,17 @@ python build/05_grade.py data/past_leads.csv data/newer_leads.csv   # writes out
             </tbody>
           </table>
         </div>
-        <p>No paid tools. With more budget, I'd add an enrichment tool to fill company size, which is blank on 36% of the 490.</p>
+        <p>I did the analysis and wrote the code with Claude on a Pro plan. The build itself calls no paid tools or APIs. With more budget, I'd add an enrichment tool to fill company size, which is blank on 36% of the 490.</p>
       </div>
     </details>
 
     <details class="toggle-block" id="app-hubspot">
       <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>C. How HubSpot grades leads today</summary>
       <div class="body">
-        <p>The number follows conversion type on all 2,015 leads. Demo requests, booked meetings and conference scans get a 1; signups, chats and emails a 2; content and events a 3.</p>
+        <p>The number follows conversion type on all 2,015 leads.</p>
         <p>The letter leans on data completeness. Leads with no employee count get a C 85% of the time, free-email leads 95%. It still sorts leads well (A 41.8%, B 25.1%, C 1.9% reached $10K).</p>
         <p>33.6% of A1, A2 and B1 leads reached $10K (177 of 527). 55.6% of the leads that reached $10K were never MQLs.</p>
+        <p>The decline in MQL quality shows up only mildly in this data. MQLs reached $10K 43.5% of the time in 2022 H2 and 29.5–39.0% in each half-year since. All leads held at 17.5–21.6%.</p>
         <div class="tbl">
           <table>
             <thead><tr><th>Half-year</th><th class="n">Leads</th><th class="n">MQLs</th><th class="n">MQLs that reached $10K</th><th class="n">All leads that reached $10K</th></tr></thead>
@@ -523,7 +525,7 @@ python build/05_grade.py data/past_leads.csv data/newer_leads.csv   # writes out
 
   <div class="slide" data-slide hidden data-note="Then open it up for questions.">
     <h2>The ask</h2>
-    <p class="big">Run the model next to the current HubSpot grades for 4 weeks. Compare which leads sales accepts and which ones place a first order.</p>
+    <p class="big">Run the model next to the current HubSpot grades, and keep both until one clearly wins on first orders.</p>
     <p class="muted">Write-up, grades and build files: this page, Read mode, Appendix A.</p>
   </div>
 
