@@ -1,0 +1,351 @@
+Base rate reached_10k: 19.8% (n=2015); ordered_within_6mo: 27.4%
+
+===== Strength of association with reached_10k (Cramér's V; p from chi-square) =====
+  0.70  p=3.7e-216  target
+  0.38  p=6.3e-61  vol_best
+  0.37  p=7.8e-58  seniority
+  0.37  p=1.3e-42  industry
+  0.37  p=5.7e-52  function
+  0.35  p=9.5e-54  vol_picklist
+  0.35  p=2.3e-49  hubspot_grade
+  0.34  p=2.7e-50  grade_letter
+  0.32  p=1.8e-40  emp_band
+  0.29  p=8.5e-37  company_geo
+  0.28  p=8.6e-34  use_case
+  0.26  p=2.1e-22  conversion_type
+  0.26  p=1.7e-28  how_heard_pod
+  0.25  p=1.4e-29  free_email
+  0.24  p=4.0e-28  has_company
+  0.24  p=7.9e-26  lead_geo
+  0.23  p=3.9e-24  mobile
+  0.19  p=6.5e-16  note_vol_band
+  0.19  p=1.8e-14  note_intent
+  0.18  p=4.5e-10  form_page
+  0.14  p=2.9e-06  source
+  0.13  p=2.6e-08  grade_number
+  0.10  p=1.4e-05  note_urgent
+  0.07  p=2.2e-03  note_vendor_pain
+  0.07  p=3.1e-03  note_intl
+  0.04  p=5.6e-01  half
+  0.00  p=9.4e-01  conference_c
+  0.00  p=1.0e+00  note_finance
+
+----- emp_band -----
+            n   hit  ordered  lift small_n
+emp_band                                  
+51-200    265  36.6     49.8  1.85        
+201-1K    191  33.0     39.8  1.67        
+11-50     298  28.5     44.6  1.44        
+5K+       162  27.2     35.2  1.37        
+1K-5K     106  22.6     32.1  1.14        
+1-10      286  20.3     26.9  1.02        
+unknown   707   4.0      6.2  0.20        
+
+----- free_email -----
+               n   hit  ordered  lift small_n
+free_email                                   
+work email  1592  25.0     34.7  1.26        
+free email   423   0.2      0.2  0.01        
+
+----- seniority -----
+                   n   hit  ordered  lift small_n
+seniority                                        
+VP                 8  75.0     87.5  3.79     <30
+manager/lead     216  45.8     56.9  2.31        
+founder/C-level  334  32.3     45.2  1.63        
+director/head    164  31.7     44.5  1.60        
+IC               317  24.6     35.0  1.24        
+unknown          974   5.7      9.0  0.29        
+intern/student     2   0.0      0.0  0.00     <30
+
+----- function -----
+                n   hit  ordered  lift small_n
+function                                      
+finance        21  57.1     61.9  2.89     <30
+program        30  46.7     50.0  2.36        
+marketing      68  45.6     64.7  2.30        
+CS/community   58  44.8     58.6  2.26        
+research       57  42.1     56.1  2.13        
+exec          334  32.3     45.2  1.63        
+admin/office  109  30.3     39.4  1.53        
+other          93  30.1     38.7  1.52        
+operations     88  29.5     38.6  1.49        
+business       73  24.7     38.4  1.25        
+IT             21  23.8     38.1  1.20     <30
+HR/people      89  20.2     30.3  1.02        
+unknown       974   5.7      9.0  0.29        
+
+----- target -----
+            n   hit  ordered  lift small_n
+target                                    
+TRUE      341  81.2     83.6  4.10        
+FALSE    1289   9.5     20.8  0.48        
+unknown   385   0.0      0.0  0.00        
+
+----- use_case -----
+                         n   hit  ordered  lift small_n
+use_case                                               
+Research Compensation  190  43.2     63.2  2.18        
+Marketing Incentives   429  28.4     43.1  1.44        
+Other                  214  23.8     30.4  1.20        
+Employee Recognition   279  23.7     35.5  1.19        
+unknown                903   8.6      9.3  0.44        
+
+----- vol_picklist -----
+                n   hit  ordered  lift small_n
+vol_picklist                                  
+$100K+        113  46.9     49.6  2.37        
+$10K-$100K    349  44.4     53.9  2.24        
+Not sure       11  27.3     27.3  1.38     <30
+<$10K         763  15.7     30.4  0.79        
+unknown       779   8.7      9.5  0.44        
+
+----- note_intent -----
+                                    n   hit  ordered  lift small_n
+note_intent                                                       
+buyer, states $ volume            216  34.7     40.3  1.75        
+no note                          1470  20.5     30.1  1.03        
+buyer, pricing question            73  13.7     13.7  0.69        
+buyer, exploring (no volume)      125   9.6      9.6  0.48        
+recipient support (not a buyer)   131   0.8      0.8  0.04        
+
+----- note_vol_band -----
+                  n   hit  ordered  lift small_n
+note_vol_band                                   
+$100K+           23  52.2     52.2  2.63     <30
+$10K-$100K       85  51.8     55.3  2.61        
+none stated    1799  18.0     25.9  0.91        
+<$10K           108  17.6     25.9  0.89        
+
+----- vol_best -----
+              n   hit  ordered  lift small_n
+vol_best                                    
+$100K+      102  52.0     52.9  2.62        
+$10K-$100K  362  45.3     54.7  2.29        
+<$10K       764  14.8     29.6  0.75        
+Not sure      8  12.5     12.5  0.63     <30
+unknown     779   8.7      9.5  0.44        
+
+----- source -----
+                   n   hit  ordered  lift small_n
+source                                           
+Paid Search      578  27.5     37.0  1.39        
+Referral          70  24.3     32.9  1.23        
+Direct           546  18.1     24.9  0.92        
+Organic Search   368  17.1     26.6  0.86        
+Organic Social     6  16.7     16.7  0.84     <30
+Offline          369  14.9     19.8  0.75        
+Other Campaigns   40  10.0     15.0  0.51        
+Paid Social       32   3.1      6.2  0.16        
+Email Marketing    6   0.0      0.0  0.00     <30
+
+----- conversion_type -----
+                                    n   hit  ordered  lift small_n
+conversion_type                                                   
+Recipient Demo                     13  53.8     53.8  2.72     <30
+Meeting Booked                     13  46.2     53.8  2.33     <30
+Send Reward                        70  41.4     47.1  2.09        
+Content Download                   56  33.9     37.5  1.71        
+Request Demo                      371  30.7     35.3  1.55        
+Client Interactive Tour (Walnut)    4  25.0     50.0  1.26     <30
+Signup                            948  19.7     32.9  1.00        
+Conference Interaction - Manual    11  18.2     18.2  0.92     <30
+Conference Interaction             25  16.0     16.0  0.81     <30
+Email Inquiry                     126  14.3     14.3  0.72        
+Webinar Registration               33   9.1     12.1  0.46        
+LinkedIn Form                      19   5.3     10.5  0.27     <30
+Tremendous Event Registration      29   3.4      3.4  0.17     <30
+Chat Inquiry                      289   2.4      2.8  0.12        
+Newsletter Subscription             3   0.0      0.0  0.00     <30
+Research Calculator                 5   0.0     20.0  0.00     <30
+
+----- how_heard_pod -----
+                                            n   hit  ordered  lift small_n
+how_heard_pod                                                             
+word of mouth / customer / got a reward    40  60.0     70.0  3.03        
+other                                      25  56.0     68.0  2.83     <30
+search engine                             117  49.6     59.8  2.50        
+event / partner                             6  33.3     66.7  1.68     <30
+social / video / review / news             11  18.2     36.4  0.92     <30
+unknown                                  1816  16.5     23.7  0.83        
+
+----- how_heard_c -----
+  warnings.warn("Maximum Likelihood optimization failed to "
+                                           n    hit  ordered  lift small_n
+how_heard_c                                                               
+News article                               1  100.0    100.0  5.05     <30
+Received a Tremendous reward               4   75.0     75.0  3.79     <30
+Word of mouth                             35   60.0     71.4  3.03        
+Other                                     25   56.0     68.0  2.83     <30
+Search engine                            117   49.6     59.8  2.50        
+Conference or event                        3   33.3     33.3  1.68     <30
+Platform integration or partner vendor     3   33.3    100.0  1.68     <30
+Social media                               5   20.0     20.0  1.01     <30
+unknown                                 1816   16.5     23.7  0.83        
+Current or former customer                 1    0.0      0.0  0.00     <30
+Review website                             2    0.0      0.0  0.00     <30
+YouTube or online video                    3    0.0     66.7  0.00     <30
+
+----- conference_c -----
+                 n   hit  ordered  lift small_n
+conference_c                                   
+Yes             47  21.3     21.3  1.07        
+no            1968  19.8     27.6  1.00        
+
+----- mobile -----
+            n   hit  ordered  lift small_n
+mobile                                    
+No       1125  27.8     38.5  1.41        
+unknown   818  10.5     13.4  0.53        
+Yes        72   0.0     13.9  0.00        
+
+----- company_geo -----
+                n   hit  ordered  lift small_n
+company_geo                                   
+US           1083  29.0     40.4  1.46        
+non-US        351  19.9     27.1  1.01        
+unknown       581   2.6      3.6  0.13        
+
+----- industry -----
+                                       n   hit  ordered  lift small_n
+industry                                                             
+Food Beverages                        16  81.2     81.2  4.10     <30
+Health Wellness and Fitness           15  46.7     66.7  2.36     <30
+Consumer Goods                        14  42.9     42.9  2.16     <30
+Research                              12  41.7     83.3  2.10     <30
+Computer Software                    202  41.1     52.5  2.08        
+Real Estate                           30  40.0     46.7  2.02        
+Food Production                       20  40.0     45.0  2.02     <30
+Business Supplies and Equipment       22  36.4     50.0  1.84     <30
+Professional Training Coaching        25  36.0     40.0  1.82     <30
+Hospital Health Care                  69  34.8     40.6  1.76        
+Retail                                69  33.3     42.0  1.68        
+Online Media                          16  31.2     31.2  1.58     <30
+Financial Services                    24  29.2     33.3  1.47     <30
+Education Management                  57  26.3     33.3  1.33        
+Facilities Services                   24  25.0     37.5  1.26     <30
+Consumer Services                     60  25.0     36.7  1.26        
+Other                                279  24.4     36.2  1.23        
+Management Consulting                 75  24.0     36.0  1.21        
+Construction                           9  22.2     33.3  1.12     <30
+E Learning                            14  21.4     21.4  1.08     <30
+Hospitality                           38  21.1     39.5  1.06        
+Apparel Fashion                       15  20.0     53.3  1.01     <30
+Building Materials                    15  20.0     26.7  1.01     <30
+Entertainment                         21  19.0     33.3  0.96     <30
+Information Technology and Services   63   9.5     20.6  0.48        
+Automotive                            11   9.1      9.1  0.46     <30
+Broadcast Media                       13   7.7     15.4  0.39     <30
+Higher Education                      61   6.6     13.1  0.33        
+unknown                              689   4.6      6.8  0.23        
+Insurance                             25   0.0     12.0  0.00     <30
+Capital Markets                       12   0.0     16.7  0.00     <30
+
+----- form_page -----
+                             n   hit  ordered  lift small_n
+form_page                                                  
+Recipient tour              16  50.0     50.0  2.53     <30
+Demo page                   35  42.9     48.6  2.16        
+Research incentives page    21  33.3     33.3  1.68     <30
+Other page                  37  32.4     40.5  1.64        
+Homepage                   222  32.0     39.2  1.62        
+Payouts page                14  28.6     35.7  1.44     <30
+Gift cards page            122  18.9     21.3  0.95        
+(no page)                 1472  17.2     25.9  0.87        
+Prepaid Visa page           60  10.0     10.0  0.51        
+Employee rewards page       16   0.0      6.2  0.00     <30
+
+----- note_vendor_pain -----
+                     n   hit  ordered  lift small_n
+note_vendor_pain                                   
+yes                 76  34.2     36.8  1.73        
+no                1939  19.2     27.1  0.97        
+
+----- note_urgent -----
+                n   hit  ordered  lift small_n
+note_urgent                                   
+yes            58  43.1     46.6  2.18        
+no           1957  19.1     26.9  0.97        
+
+----- note_finance -----
+                 n   hit  ordered  lift small_n
+note_finance                                   
+yes             28  21.4     28.6  1.08     <30
+no            1987  19.8     27.4  1.00        
+
+----- note_intl -----
+              n   hit  ordered  lift small_n
+note_intl                                   
+yes          24  45.8     54.2  2.31     <30
+no         1991  19.5     27.1  0.98        
+
+----- picklist volume vs note-stated volume (rows with both) -----
+note_vol_band  $100K+  $10K-$100K  <$10K
+vol_picklist                            
+$100K+             22           0     12
+$10K-$100K          0          72      0
+<$10K               1          11     95
+Not sure            0           2      1 
+agree: 0.88 n= 216
+
+----- use case x volume (n>=30) -----
+                                      n   hit  ordered  lift small_n
+usecase_x_vol                                                       
+Research Compensation | $10K-$100K   49  61.2     77.6  3.09        
+Marketing Incentives | $10K-$100K   136  47.8     61.8  2.41        
+Employee Recognition | $10K-$100K    84  46.4     51.2  2.34        
+Other | $10K-$100K                   31  45.2     51.6  2.28        
+Marketing Incentives | $100K+        39  38.5     41.0  1.94        
+Research Compensation | <$10K       112  28.6     54.5  1.44        
+Marketing Incentives | <$10K        250  16.0     33.2  0.81        
+unknown | $10K-$100K                 49  14.3     14.3  0.72        
+Employee Recognition | <$10K        170  13.5     30.6  0.68        
+Other | <$10K                       152  12.5     19.7  0.63        
+unknown | unknown                   753   8.4      9.2  0.42        
+unknown | <$10K                      79   7.6      7.6  0.38        
+
+===== Multivariate logistic (all leads) =====
+
+-- without target account: pseudo-R2 0.323, n=2015
+                                                            odds_ratio      p
+C(seniority, Treatment('unknown'))[T.VP]                         30.78  0.000
+C(free_email)[T.work email]                                      18.27  0.007
+C(use_case, Treatment('unknown'))[T.Research Compensation]        8.31  0.000
+C(seniority, Treatment('unknown'))[T.manager/lead]                6.49  0.000
+C(use_case, Treatment('unknown'))[T.Other]                        4.26  0.000
+C(seniority, Treatment('unknown'))[T.director/head]               3.90  0.000
+C(use_case, Treatment('unknown'))[T.Marketing Incentives]         3.65  0.000
+C(seniority, Treatment('unknown'))[T.founder/C-level]             3.63  0.000
+C(conversion_type_g, Treatment('Signup'))[T.Email Inquiry]        3.04  0.018
+C(conversion_type_g, Treatment('Signup'))[T.Send Reward]          2.79  0.001
+C(use_case, Treatment('unknown'))[T.Employee Recognition]         2.75  0.001
+C(seniority, Treatment('unknown'))[T.IC]                          2.72  0.000
+C(company_geo, Treatment('unknown'))[T.US]                        2.10  0.044
+C(vol_best, Treatment('unknown'))[T.$100K+]                       2.01  0.075
+C(vol_best, Treatment('unknown'))[T.$10K-$100K]                   1.72  0.094
+emp_log                                                           1.16  0.023
+C(vol_best, Treatment('unknown'))[T.<$10K]                        0.34  0.001
+C(source, Treatment('Direct'))[T.Other Campaigns]                 0.30  0.065
+C(source, Treatment('Direct'))[T.Paid Social]                     0.05  0.005
+Intercept                                                         0.00  0.000
+
+===== Lever ablation: cross-validated AUC (L2 logistic, 5-fold grouped by company) =====
+  HubSpot grade alone:          0.702
+  all levers, no target acct:   0.866
+  all levers + target acct:     0.945
+  target acct alone:            0.848
+  drop one group from 'all levers, no target' (bigger drop = more unique signal):
+    volume (picklist + note)         drop +0.026   alone 0.706
+    title (seniority + function)     drop +0.010   alone 0.750
+    company (size, industry, geo)    drop +0.007   alone 0.750
+    conversion type / form           drop +0.007   alone 0.672
+    use case                         drop +0.007   alone 0.669
+    source + how heard               drop +0.004   alone 0.613
+    mobile                           drop +0.003   alone 0.626
+    email type                       drop +0.001   alone 0.615
+    note intent                      drop -0.001   alone 0.593
+
+===== Preview: matched-volume precision (cross-validated, NOT the time-split eval) =====
+  all levers, no target    top 527: precision 52.6%, recall 69.4%
+  all levers + target      top 527: precision 65.5%, recall 86.5%
+  HubSpot A1/A2/B1         n=527: precision 33.6%, recall 44.4%

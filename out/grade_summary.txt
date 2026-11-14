@@ -1,0 +1,57 @@
+graded 490 newer leads over 7 months -> out/grades.csv
+cutoffs (past score percentiles): A >= 0.323 (70th), B >= 0.128 (40th)
+       leads  share  per_month
+grade                         
+A        112   22.9       16.0
+B         94   19.2       13.4
+C        178   36.3       25.4
+D        106   21.6       15.1
+
+HubSpot MQLs in the 490: 121 (17.3/month)
+Filtered (D) by reason: {'free email': 52, 'mobile': 38, 'recipient': 16}
+
+New grade x HubSpot grade:
+hubspot_grade  A1  A2  B1  B2  B3  C1  C2
+grade                                    
+A              12  16  34  47   1   1   1
+B               3   9  15  59   1   2   5
+C               1   7  17  87   1  15  50
+D               0   4   3  27   1   2  69
+
+New grade x HubSpot MQL:
+is_mql_today  MQL  not MQL
+grade                     
+A              62       50
+B              27       67
+C              25      153
+D               7       99
+
+Score range by grade:
+       min  median  max
+grade                  
+A       33    55.0   90
+B       13    20.5   31
+C        1     5.0   13
+D        0     0.0    0
+
+Top 10 weights (log-odds):
+conversion_type_g=Send Reward      0.85
+seniority=VP                       0.79
+use_case=Research Compensation     0.76
+conversion_type_g=Email Inquiry    0.67
+industry=Computer Software         0.63
+vol_best=$100K+                    0.56
+source=Direct                      0.53
+how_heard_pod=wom                  0.52
+vol_best=$10K-$100K                0.50
+industry=Real Estate               0.48
+
+Example lines:
+  L102124 A  90  Call within a day. Why: VP of Growth Marketing; heard via search engine.
+  L101164 A  89  Call within a day. Why: heard via word of mouth; HR Manager.
+  L100583 B  31  Self-serve for now; reach out after a first order. Why: Procurement Manager; use case: other.
+  L101691 B  31  Self-serve for now; reach out after a first order. Why: Finance Manager; heard via youtube or online video.
+  L100340 C  13  Self-serve onboarding, no rep. Held back by: says <$10K a year; company size unknown.
+  L101937 C  13  Self-serve onboarding, no rep. Held back by: says <$10K a year; didn't say how they heard of us.
+  L101460 D   0  Personal email. Nurture only.
+  L101732 D   0  Personal email. Nurture only.

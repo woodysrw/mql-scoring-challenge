@@ -1,0 +1,350 @@
+
+===== What tracks grade_letter (Cramér's V, 0-1) =====
+  0.69  has_company
+  0.69  free_email
+  0.60  emp_band
+  0.58  company_geo
+  0.57  industry
+  0.51  target
+  0.50  seniority
+  0.47  function
+  0.42  conversion_type
+  0.33  vol_picklist
+  0.31  note_intent
+  0.29  use_case
+  0.25  lead_geo
+  0.19  form_page
+  0.19  mobile
+  0.18  source
+  0.15  how_heard_c
+  0.08  half
+  0.08  conference_c
+
+===== What tracks grade_number (Cramér's V, 0-1) =====
+  1.00  conversion_type
+  0.52  form_page
+  0.44  note_intent
+  0.32  function
+  0.30  source
+  0.27  free_email
+  0.27  has_company
+  0.24  conference_c
+  0.23  industry
+  0.23  seniority
+  0.20  emp_band
+  0.20  target
+  0.19  company_geo
+  0.19  lead_geo
+  0.18  half
+  0.14  vol_picklist
+  0.11  use_case
+  0.06  how_heard_c
+  0.05  mobile
+
+===== % A / B / C by employee band =====
+grade_letter     A     B     C
+emp_band                      
+1-10          19.0  74.0   7.0
+11-50         19.0  77.0   3.0
+1K-5K         18.0  81.0   1.0
+201-1K        16.0  83.0   1.0
+51-200        27.0  71.0   2.0
+5K+           10.0  86.0   4.0
+unknown        1.0  14.0  85.0
+
+===== letter by free email =====
+grade_letter     A     B     C
+free_email                    
+free email     0.0   5.0  95.0
+work email    16.0  69.0  15.0
+
+===== letter by target =====
+grade_letter     A     B     C
+target                        
+FALSE         13.0  67.0  19.0
+TRUE          25.0  71.0   4.0
+unknown        0.0   1.0  99.0
+
+===== letter by seniority =====
+grade_letter        A     B     C
+seniority                        
+IC                9.0  83.0   9.0
+VP               25.0  62.0  12.0
+director/head    41.0  55.0   3.0
+founder/C-level  35.0  63.0   2.0
+intern/student    0.0  50.0  50.0
+manager/lead     18.0  79.0   3.0
+unknown           0.0  38.0  61.0
+
+===== number by conversion_type =====
+grade_number                          1      2      3    n
+conversion_type                                           
+Chat Inquiry                        0.0  100.0    0.0  289
+Client Interactive Tour (Walnut)  100.0    0.0    0.0    4
+Conference Interaction            100.0    0.0    0.0   25
+Conference Interaction - Manual   100.0    0.0    0.0   11
+Content Download                    0.0    0.0  100.0   56
+Email Inquiry                       0.0  100.0    0.0  126
+LinkedIn Form                       0.0  100.0    0.0   19
+Meeting Booked                    100.0    0.0    0.0   13
+Newsletter Subscription             0.0    0.0  100.0    3
+Recipient Demo                      0.0  100.0    0.0   13
+Request Demo                      100.0    0.0    0.0  371
+Research Calculator                 0.0    0.0  100.0    5
+Send Reward                         0.0  100.0    0.0   70
+Signup                              0.0  100.0    0.0  948
+Tremendous Event Registration       0.0    0.0  100.0   29
+Webinar Registration                0.0    0.0  100.0   33
+
+grade_letter tree depth 3: accuracy 82% (majority class 55%)
+
+grade_letter tree depth 5: accuracy 82% (majority class 55%)
+
+grade_letter tree depth 8: accuracy 83% (majority class 55%)
+|--- emp_band_unknown <= 0.50
+|   |--- seniority_unknown <= 0.50
+|   |   |--- seniority_IC <= 0.50
+|   |   |   |--- class: B
+|   |   |--- seniority_IC >  0.50
+|   |   |   |--- class: B
+|   |--- seniority_unknown >  0.50
+|   |   |--- company_geo_US <= 0.50
+|   |   |   |--- class: B
+|   |   |--- company_geo_US >  0.50
+|   |   |   |--- class: B
+|--- emp_band_unknown >  0.50
+|   |--- company_geo_unknown <= 0.50
+|   |   |--- seniority_unknown <= 0.50
+|   |   |   |--- class: B
+|   |   |--- seniority_unknown >  0.50
+|   |   |   |--- class: C
+|   |--- company_geo_unknown >  0.50
+|   |   |--- seniority_founder/C-level <= 0.50
+|   |   |   |--- class: C
+|   |   |--- seniority_founder/C-level >  0.50
+|   |   |   |--- class: B
+
+emp_band_unknown             0.73
+company_geo_unknown          0.06
+seniority_unknown            0.06
+seniority_IC                 0.03
+seniority_founder/C-level    0.02
+vol_picklist_$10K-$100K      0.02
+seniority_manager/lead       0.02
+industry_unknown             0.01
+
+grade_number tree depth 3: accuracy 96% (majority class 73%)
+
+grade_number tree depth 5: accuracy 99% (majority class 73%)
+
+grade_number tree depth 8: accuracy 99% (majority class 73%)
+|--- conversion_type_Request Demo <= 0.50
+|   |--- conversion_type_Content Download <= 0.50
+|   |   |--- conversion_type_Webinar Registration <= 0.50
+|   |   |   |--- class: 2
+|   |   |--- conversion_type_Webinar Registration >  0.50
+|   |   |   |--- class: 3
+|   |--- conversion_type_Content Download >  0.50
+|   |   |--- class: 3
+|--- conversion_type_Request Demo >  0.50
+|   |--- class: 1
+
+conversion_type_Request Demo                     0.66
+conversion_type_Content Download                 0.12
+conversion_type_Webinar Registration             0.07
+conference_c_Yes                                 0.07
+conversion_type_Tremendous Event Registration    0.07
+form_page_(no page)                              0.00
+conversion_type_Conference Interaction           0.00
+note_intent_buyer, exploring (no volume)         0.00
+
+===== Hit rate by HubSpot grade =====
+                 n  hit_10k  ordered
+hubspot_grade                       
+A1              77     55.8     62.3
+A2             149     36.9     63.1
+A3              30     30.0     36.7
+B1             301     26.2     30.6
+B2             730     25.6     37.9
+B3              84     16.7     19.0
+C1              46     10.9     13.0
+C2             586      1.2      1.5
+C3              12      0.0      0.0
+
+by letter:
+              size   mean
+grade_letter             
+A              256  0.418
+B             1115  0.251
+C              644  0.019
+by number:
+              size   mean
+grade_number             
+1              424  0.300
+2             1465  0.170
+3              126  0.183
+
+MQL today: n=527, precision=33.6%, recall=44.4%; non-MQL hit rate=14.9%; base=19.8%
+
+Drift by half-year:
+           n   base  mql_share  mql_prec
+half                                    
+2022-H2  208  0.202      0.221     0.435
+2023-H1  478  0.199      0.326     0.295
+2023-H2  570  0.175      0.258     0.333
+2024-H1  500  0.212      0.202     0.317
+2024-H2  259  0.216      0.297     0.390
+known-employee rows: 1308 {'B': 1015, 'A': 248, 'C': 45}
+
+-- seniority
+ grade_letter       A    B   C    n    %A
+seniority                               
+director/head     67   90   1  158  42.0
+founder/C-level  112  190   2  304  37.0
+VP                 2    5   1    8  25.0
+manager/lead      37  164   2  203  18.0
+IC                27  241   1  269  10.0
+unknown            3  324  38  365   1.0
+intern/student     0    1   0    1   0.0
+
+-- target
+ grade_letter    A    B   C    n    %A
+target                               
+TRUE           82  228   6  316  26.0
+FALSE         166  787  39  992  17.0
+
+-- industry
+ grade_letter                          A    B   C    n    %A
+industry                                                   
+Health Wellness and Fitness          10    5   0   15  67.0
+Capital Markets                       6    6   0   12  50.0
+Apparel Fashion                       4    5   0    9  44.0
+Financial Services                    9   13   0   22  41.0
+Online Media                          4    5   1   10  40.0
+Research                              4    8   0   12  33.0
+Retail                               21   39   5   65  32.0
+Food Production                       5   12   0   17  29.0
+Computer Software                    51  141   1  193  26.0
+Real Estate                           7   20   1   28  25.0
+Professional Training Coaching        5   16   0   21  24.0
+Hospitality                           8   28   0   36  22.0
+Information Technology and Services  10   44   3   57  18.0
+Consumer Services                     9   40   1   50  18.0
+Other                                39  204   7  250  16.0
+Management Consulting                10   60   1   71  14.0
+Business Supplies and Equipment       3   18   0   21  14.0
+Building Materials                    2   12   0   14  14.0
+E Learning                            2   10   2   14  14.0
+Insurance                             3   19   1   23  13.0
+Food Beverages                        2   14   0   16  12.0
+Hospital Health Care                  8   58   0   66  12.0
+Education Management                  7   47   2   56  12.0
+Construction                          1    7   0    8  12.0
+Entertainment                         2   15   2   19  11.0
+Higher Education                      6   53   1   60  10.0
+Automotive                            1    9   1   11   9.0
+Facilities Services                   2   20   2   24   8.0
+Broadcast Media                       1    8   4   13   8.0
+unknown                               6   69  10   85   7.0
+Consumer Goods                        0   10   0   10   0.0
+
+-- company_geo
+ grade_letter    A    B   C    n    %A
+company_geo                          
+US            208  766  17  991  21.0
+non-US         40  231  23  294  14.0
+unknown         0   18   5   23   0.0
+
+-- vol_picklist
+ grade_letter   A    B   C    n    %A
+vol_picklist                        
+$10K-$100K    92  190   5  287  32.0
+$100K+        25   67   3   95  26.0
+Not sure       2    7   0    9  22.0
+<$10K         98  463  14  575  17.0
+unknown       31  288  23  342   9.0
+
+-- use_case
+ grade_letter            A    B   C    n    %A
+use_case                                     
+Marketing Incentives   90  230   5  325  28.0
+Employee Recognition   49  169   5  223  22.0
+Research Compensation  33  126   2  161  20.0
+Other                  27  123   4  154  18.0
+unknown                49  367  29  445  11.0
+
+-- emp_band
+ grade_letter   A    B   C    n    %A
+emp_band                            
+51-200        71  188   6  265  27.0
+1-10          54  213  19  286  19.0
+11-50         58  230  10  298  19.0
+1K-5K         19   86   1  106  18.0
+201-1K        30  159   2  191  16.0
+5K+           16  139   7  162  10.0
+
+-- free_email
+ grade_letter    A    B   C     n    %A
+free_email                            
+work email    247  996  37  1280  19.0
+free email      1   19   8    28   4.0
+
+A/B/C tree on known rows, depth 4 acc: 0.781 majority: 0.776
+|--- seniority_unknown <= 0.50
+|   |--- seniority_IC <= 0.50
+|   |   |--- seniority_manager/lead <= 0.50
+|   |   |   |--- industry_Health Wellness and Fitness <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- industry_Health Wellness and Fitness >  0.50
+|   |   |   |   |--- class: A
+|   |   |--- seniority_manager/lead >  0.50
+|   |   |   |--- vol_picklist_$100K+ <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- vol_picklist_$100K+ >  0.50
+|   |   |   |   |--- class: B
+|   |--- seniority_IC >  0.50
+|   |   |--- vol_picklist_$10K-$100K <= 0.50
+|   |   |   |--- target_FALSE <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- target_FALSE >  0.50
+|   |   |   |   |--- class: B
+|   |   |--- vol_picklist_$10K-$100K >  0.50
+|   |   |   |--- emp_band_51-200 <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- emp_band_51-200 >  0.50
+|   |   |   |   |--- class: B
+|--- seniority_unknown >  0.50
+|   |--- company_geo_US <= 0.50
+|   |   |--- vol_picklist_unknown <= 0.50
+|   |   |   |--- industry_Higher Education <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- industry_Higher Education >  0.50
+|   |   |   |   |--- class: B
+|   |   |--- vol_picklist_unknown >  0.50
+|   |   |   |--- emp_band_1-10 <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- emp_band_1-10 >  0.50
+|   |   |   |   |--- class: C
+|   |--- company_geo_US >  0.50
+|   |   |--- industry_Retail <= 0.50
+|   |   |   |--- industry_unknown <= 0.50
+|   |   |   |   |--- class: B
+|   |   |   |--- industry_unknown >  0.50
+|   |   |   |   |--- class: B
+|   |   |--- industry_Retail >  0.50
+|   |   |   |--- class: B
+
+
+C rows with known employees:
+ emp_band  seniority        free_email  industry              company_geo  target
+1-10      unknown          work email  Retail                US           FALSE     3
+11-50     unknown          work email  unknown               non-US       FALSE     2
+5K+       unknown          free email  E Learning            non-US       FALSE     2
+1-10      unknown          work email  Education Management  non-US       FALSE     2
+5K+       unknown          free email  Broadcast Media       US           FALSE     2
+201-1K    unknown          work email  Other                 unknown      FALSE     2
+1-10      unknown          work email  Other                 non-US       FALSE     2
+          founder/C-level  work email  Facilities Services   US           FALSE     1
+51-200    manager/lead     work email  Retail                non-US       TRUE      1
+11-50     unknown          work email  unknown               US           FALSE     1
+Name: count, dtype: int64

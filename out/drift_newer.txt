@@ -1,0 +1,95 @@
+past 2015 leads, newer 490 leads (2024-10-01 to 2025-04-30)
+
+== Fill rate, past vs newer ==
+  lead_id                        100%   100%
+  lead_created_date              100%   100%
+  email                          100%   100%
+  job_title                       52%    52%
+  company_name                    80%    88%
+  company_industry                66%    68%
+  company_employees               65%    64%
+  company_country                 71%    74%
+  lead_country                    59%    73%  <-- shift
+  lead_source                    100%   100%
+  ad_platform                      0%    17%  <-- shift
+  conversion_type                100%   100%
+  conversion_form                100%   100%
+  conference                       2%     2%
+  mobile_signup                   59%    74%  <-- shift
+  how_heard                       10%    13%
+  self_reported_use_case          55%    61%
+  self_reported_annual_volume     61%    68%
+  lead_note                       27%    22%
+  is_target_account               81%    89%
+  hubspot_grade                  100%   100%
+
+== Mix shifts (share, past -> newer), values moving 5+ points ==
+-- source
+                past  newer
+source                     
+Paid Search     28.7   21.6
+Organic Search  18.3   28.0
+   values never seen in past leads: ['AI Referrals']
+-- conversion_type
+                 past  newer
+conversion_type             
+Signup           47.0   58.8
+Email Inquiry     6.3    0.2
+   values never seen in past leads: ['Client-to-Client Referral v1', 'Referred from Partner']
+-- free_email
+            past  newer
+free_email             
+work email  79.0   86.5
+free email  21.0   13.5
+-- vol_picklist
+              past  newer
+vol_picklist             
+unknown       38.7   32.4
+-- use_case
+          past  newer
+use_case             
+unknown   44.8   39.2
+-- note_intent
+             past  newer
+note_intent             
+no note      73.0   78.2
+-- mobile
+         past  newer
+mobile              
+No       55.8   64.9
+unknown  40.6   25.7
+Yes       3.6    9.4
+-- company_geo
+             past  newer
+company_geo             
+non-US       17.4   22.9
+-- form_page
+                 past  newer
+form_page                   
+Homepage         11.0   18.8
+Gift cards page   6.1    0.2
+-- hubspot_grade
+               past  newer
+hubspot_grade             
+B2             36.2   44.9
+
+== ad_platform values in newer leads == {'(blank)': 409, 'Google Ads': 46, 'LinkedIn': 28, 'Bing Ads': 7}
+
+== HubSpot MQL share: past 26.2% newer 24.7%
+
+== Notes: how many the regex reads ==
+note_intent
+buyer, states $ volume             71
+recipient support (not a buyer)    16
+buyer, exploring (no volume)       15
+buyer, pricing question             5
+
+Notes with no recipient/volume/pricing match: 15. Distinct texts (first 12):
+  - Exploring options for sending rewards.
+  - Interested in sending gift cards. Not sure on volume yet.
+  - Interested in sending payouts. Not sure on volume yet.
+  - Exploring options for sending payouts.
+  - Interested in sending rewards. Not sure on volume yet.
+  - Exploring options for sending gift cards.
+
+Notes mentioning money that the regex missed: 0

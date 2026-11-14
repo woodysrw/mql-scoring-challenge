@@ -1,0 +1,79 @@
+# Process log
+
+Running notes during the build, newest at the bottom. Tags: TIME, FINDING, DECISION, TOOL, CAVEAT, IDEA, MARKETING.
+
+Format: `HH:MM [TAG] what happened. why / number.`
+
+---
+
+20:19 [TIME] Start phase 1-2: profile past leads, reverse-engineer HubSpot grade, lever tests. Q&A detail in analysis-notes.md.
+20:19 [TOOL] Python (pandas, scikit-learn, statsmodels) in .venv; shared cleaning in build/clean.py so the 490 get identical treatment.
+20:20 [FINDING] HubSpot number is a pure lookup on conversion_type (Cramér's V 1.00): demo/meeting/conference = 1, signup/chat/email = 2, content/webinar/event = 3.
+20:20 [FINDING] HubSpot letter is mostly data completeness: no employee count -> 85% C, free email -> 95% C. Tree reproduces letter 82% (majority 55%), so it's additive points.
+20:20 [FINDING] Letter separates (A 41.8%, B 25.1%, C 1.9% hit $10K); number barely (1: 30.0%, 2: 17.0%, 3: 18.3%). B1 26.2% vs B2 25.6%: the MQL line is drawn on noise.
+20:20 [FINDING] Baseline MQL (A1/A2/B1): 527 leads, 33.6% precision, 44.4% recall. 222 of 399 good leads missed, 187 of them in B2.
+20:21 [FINDING] B2 leads with $10K-$100K picklist hit 44.8% (n=143), better than the average MQL.
+20:21 [FINDING] how_heard, use case, annual volume are picklists (11/4/4 options). Only lead_note and job_title are free text, and both are templated.
+20:21 [DECISION] Regex, not an LLM, for lead_note: notes are stock lines or "$X a year/month" sentences. Regex pulls intent + $ volume for free. Rejected: LLM classification (no signal it would add here).
+20:21 [FINDING] Note $ volume agrees with volume picklist 88% (n=216); merged into one volume field.
+20:21 [FINDING] Recipient-support notes ("never got my payment", "is this legit") hit 0.8% (n=131). Hard filter: these are reward recipients, not buyers.
+20:22 [FINDING] Lever ablation AUC: HubSpot grade 0.702; all levers no target 0.866; + target 0.945. Volume carries the most unique signal (drop 0.026), then title (0.010).
+20:22 [FINDING] Preview at matched volume (527, CV by company, not time split): 52.6% precision / 69.4% recall vs HubSpot 33.6% / 44.4%.
+20:22 [CAVEAT] Target account: 81.2% hit, ~80%+ at every HubSpot letter (C-graded targets 92%, n=12). Exported after outcomes; likely leakage. Building without it by default.
+20:22 [CAVEAT] Zero-rate groups look planted: mobile signup 0/72, free email 1/423.
+20:22 [CAVEAT] Drift is mild: base 17.5%-21.6% by half-year; MQL precision 43.5% in 2022-H2 then 29.5%-39.0%.
+20:22 [FINDING] HubSpot favors director/founder titles, but manager/lead hits highest (46.0% vs 31.6% director, 35.2% founder; known-company work email).
+20:22 [MARKETING] Paid search 27.5% hit vs organic 17.1%, direct 18.1%, offline 14.9%. Paid social 3.1% (n=32).
+20:22 [MARKETING] Conference leads 21.3% (n=47), about base. Webinar 9.1% (n=33); Tremendous event registration 3.4% (n=29, small).
+20:22 [MARKETING] Research Compensation use case 43.2% (n=190); with $10K-$100K volume 61.2% (n=49). Word-of-mouth how_heard 60.0% (n=40) but 90% of leads leave how_heard blank.
+20:22 [MARKETING] Chat inquiries hit 2.4% (n=289) yet HubSpot scores them engagement 2, same as signups.
+20:22 [IDEA] Make how_heard required at signup: the 10% who fill it hit 49.6%-60.0%. Cheap data win.
+20:22 [IDEA] Route recipient-support chats/notes to support automatically; they're 6.5% of leads and never buy.
+20:30 [FINDING] Framing for write-up: HubSpot number = which conversion happened; letter = how complete the enrichment is. Top letter driver is employee count present vs blank (tree importance 0.73), not its value.
+20:30 [FINDING] HubSpot gives target accounts only a small fit bump (26% A vs 17% among known companies), yet target accounts hit $10K 81.2%. Either HubSpot badly underweights the list or the list is leakage (exported Oct 2026).
+20:40 [DECISION] Test plan framed as 5 angles: disqualifiers, volume-first rule, data-weighted points model, three-way routing, input fixes. All judged on the same time-split, matched-volume test vs HubSpot.
+20:45 [FINDING] MQL baseline in counts: 527 sent, 177 good, 350 not; 399 good total, 222 never MQL (187 in B2).
+20:45 [CAVEAT] No column shows which leads sales actually worked. "Sent to sales" = graded A1/A2/B1 per the brief. Baseline grades HubSpot's grade, not rep behavior, and can't show sales caused any outcome.
+20:45 [FINDING] Self-serve vs sales ask: any-order rate is similar (Request Demo 35.3%, Signup 32.9%), but of those who order, 87.0% of demo requesters reach $10K (n=131) vs 59.9% of signups (n=312). Sales-ask leads are bigger, not more likely to buy.
+20:45 [MARKETING] Test-send leads (Send Reward first) hit $10K 41.4% (n=70) with no sales ask; 87.9% of those who order reach $10K (n=33).
+20:45 [DECISION] Group Meeting Booked (n=13) with Request Demo as "asked to talk to sales" (384 leads, 31.2% hit). Rejected: quoting Meeting Booked's 46.2% alone, n too small.
+20:45 [IDEA] Three-way routing: sales for big volume, self-serve for small, a watch tier re-scored after first order (uses ordered_within_6mo).
+21:00 [DECISION] Name the system a "lead waterfall": filter out -> score -> route. Rejected: generic "pipeline". Note the overlap with SiriusDecisions' demand waterfall.
+21:00 [TOOL] L2 logistic regression on older leads, scored on Apr-Sep 2024 (477 leads, 106 good). Train before 2024-04-01, 19 leads dropped for sharing a company with test. No target account, no HubSpot grade as inputs.
+21:02 [FINDING] Test AUC: HubSpot 0.729, waterfall 0.865.
+21:02 [FINDING] Matched volume (118 sent): waterfall 64 good, 54.2% precision, 60.4% recall vs HubSpot 45 good, 38.1%, 42.5%. Bootstrap: +19.1 good leads (95% range 6 to 33), wins 99.8% of resamples.
+21:02 [FINDING] Same recall as HubSpot from 66 leads instead of 118 (68.2% precision). Wasted conversations 12.2/month -> 3.5/month.
+21:02 [FINDING] Volume rule alone: 124 sent, 48.4% precision, 56.6% recall. Beats HubSpot; the waterfall beats it.
+21:02 [FINDING] Swap at matched volume: drops 65 MQLs hitting 23.1%, adds 65 non-MQLs hitting 52.3% (54 were B2, 44 stated $10K+).
+21:02 [MARKETING] 12 of the dropped MQLs were conference scans: HubSpot scores them engagement 1, but conference leads hit about base (21.3% overall).
+21:02 [FINDING] Disqualifiers alone barely move HubSpot's MQLs (118 -> 115, same 45 good); they matter for cleaning the pool: 112 test leads filtered, 1 good.
+21:02 [FINDING] Three lanes on test: sales now 140 (51.4% hit), watch 89 (29.2% hit, 39.3% ordered), self-serve 136 (5.1%), filtered 112 (0.9%).
+21:02 [FINDING] New grades fall cleanly A 73.2% > B 36.9% > C 29.2% > C- 5.1% > filtered 0.9%.
+21:02 [CAVEAT] Target account as an input: 93 good, 78.8% precision at matched volume. Too good; reported as sensitivity only.
+21:02 [CAVEAT] Test slice small (118 sent). "Wasted" assumes every MQL got a rep conversation; hours need Tremendous's time-per-lead.
+21:10 [TIME] Start: plain-language testing walkthrough (testing-walkthrough.md). Re-ran 04_waterfall_eval.py; output identical to out/eval_waterfall.txt.
+21:12 [FINDING] ad_platform is 0.0% filled in every quarter of the 2,015 past leads (2022Q4-2024Q3). Excluding it loses nothing in training; it can only matter on the 490.
+21:13 [CAVEAT] Weights and cutoff (0.297) come from training months only, but filter rules and field groupings were chosen from all 2,015 leads, test months included. Filtered groups stay near zero in test (free email 0/63, mobile 0/11, recipient notes 1/38), so likely small.
+21:13 [CAVEAT] Bootstrap (+19.1, 95% range 6 to 33, wins 99.8%) resamples test leads with the model held fixed. It covers luck in which leads arrived, not variation from training on different months.
+21:14 [TIME] End: testing walkthrough written.
+21:20 [TIME] Exploration summary drafted: writeup/exploration-summary.md (opening of write-up + slide outline). Checked against writing-style.md.
+21:30 [TIME] Write-up page filled with exploration results (summary table, today's MQLs by half-year, waterfall flow + signals, tools, decisions, limits, routing lanes, next tests, channel slide). 490 grading still open.
+21:40 [DECISION] Walkthrough section 4 rewritten in plain English: filter -> score -> line order, one question per row, and 0.297 explained as a volume choice (top 30% of filtered training leads). Rejected: presenting 0.297 as an optimized threshold.
+11:53 [DECISION] Cut the write-up to four sections (what I built, results vs HubSpot, why it works + caveats, before rollout + next tests) plus collapsible appendices (build, HubSpot grade, test method, channels, log). Why: rubric asks for clear and concise twice, and reviewers screen the build before any meeting. Rejected: background-first layout (today's MQLs, grade mechanics up top); moved to Appendix B.
+12:00 [TIME] Grading the 490 newer leads: drift check, then build/05_grade.py.
+12:00 [FINDING] Newer leads vs past (out/drift_newer.txt): mobile signups 3.6% -> 9.4%, free email 21.0% -> 13.5%, Signup 47.0% -> 58.8%, Organic Search 18.3% -> 28.0%. ad_platform 17% filled (ignored). Notes still fit the regex: 0 money mentions missed.
+12:00 [FINDING] 4 newer leads carry values never seen in past leads: 2 'AI Referrals' source, 1 'Referred from Partner', 1 'Client-to-Client Referral v1'. Rep line flags them for a manual check.
+12:00 [DECISION] Pooled industry and form_page groups under 30 past leads into "other (small)", as conversion type already was. Why: top weights rested on 13-16 leads (Food Beverages 81.2% on 16). Eval after pooling: matched volume 63 good vs HubSpot 45 (was 64), same recall at 60 leads (was 66), recommended cutoff 136 sent / 68 good / 50.0% / 64.2%, bootstrap wins 99.6%. Rejected: keeping unpooled for a 1-lead better headline.
+12:00 [DECISION] Grade = lane: A sales now (score >= 70th pct of past, 0.323), B watch (>= 40th, 0.128), C self-serve, D filtered. Test-slice hit rates A 50.0%, B 32.6%, C 5.7%, D 0.9%. Rejected: 4 score bands, where B and C tied (31.7% vs 32.6%).
+12:00 [FINDING] 490 graded: A 112 (16.0/mo), B 94, C 178, D 106 (free email 52, mobile 38, recipient 16). HubSpot would MQL 121 (17.3/mo); 62 overlap with A.
+12:00 [TOOL] Rep line = template: grade action + the two field groups that moved the score most (coef x value vs average). No LLM; lines read fine, $0.
+12:00 [CAVEAT] Final model is refit on all 2,015 past leads, so the 490 grades come from a model slightly different from the one tested on Apr-Sep 2024.
+12:07 [MARKETING] ad_platform in the 490 (81 filled): Google Ads 46 -> 12 graded A; LinkedIn 28 -> 1 A, 9 D; Bing 7 -> 4 A. Grades only, no outcomes yet.
+12:07 [FINDING] ad_platform disagrees with lead_source: of 46 Google Ads leads, only 10 have source Paid Search (16 Direct, 7 Offline). It credits a different touch than HubSpot's original source.
+12:07 [IDEA] Once the 490 have 12-month outcomes, add ad_platform to the model and test whether it adds signal beyond lead_source. Until then it can't be trained on: every past lead is blank.
+12:10 [FINDING] 490: of HubSpot's 121 MQLs, waterfall grades 62 A, 27 B, 25 C, 7 D (all 7 mobile). 50 non-MQLs graded A: 47 are B2, 42 signups, 38 stated $10K+. MQLs dropped to C: 16 demo requests, 18 stated <$10K, 12 founder/C-level.
+12:10 [FINDING] Expected good leads if the 490 behave like Apr-Sep 2024 (test-slice rates): A 56.0 of 112, B 30.6, C 10.1, D 1.0. HubSpot MQLs at 38.1%: 46.1 of 121. Estimate, not an outcome.
+12:14 [FINDING] Test slice, first order within 6 months: waterfall A 64.7% vs HubSpot MQL 53.4%; waterfall-only leads 56.8% (n=74) vs HubSpot-only 30.4% (n=56). Order rate ranks the systems the same way $10K does, so it can be the early read.
+12:14 [DECISION] Live eval plan (writeup/eval-plan.md): 1-month shadow run, then 6 months where sales works both lists (about 24/mo vs 17) and the disagreement groups are compared on first orders. Optional 1-in-5 rep holdout in the watch lane to measure what a rep adds. Rejected: holding A leads back from sales (costs good leads) and waiting 18 months for $10K before deciding.
+12:17 [DECISION] Write-up v9: pooled-model numbers (63 vs 45, 60 leads for same recall, 99.6%), grade counts for the 490, example rep lines, tools rows, eval plan condensed into 'Before rollout'. grades.csv, build scripts and this log published with the page. Main body 1,388 words; trim still to do.
+12:22 [DECISION] Trimmed write-up main body to 731 prose words (from 1,388 incl. tables). Moved tools table to Appendix B and signals table + how-heard test to Appendix E; merged lanes table into the grade table (order-rate column). Why: rubric asks for concise twice.

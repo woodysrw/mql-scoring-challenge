@@ -1,0 +1,53 @@
+Target-account hit rate by HubSpot letter:
+              mean        size     
+target       FALSE  TRUE FALSE TRUE
+grade_letter                       
+A             0.21  0.83   170   86
+B             0.10  0.80   869  243
+C             0.00  0.92   250   12
+
+Target share by half (stable list would be flat):
+half
+2022-H2    0.18
+2023-H1    0.24
+2023-H2    0.18
+2024-H1    0.20
+2024-H2    0.26
+Name: target, dtype: float64
+
+Target TRUE: ordered but not 10K: 8 | never ordered: 56
+
+Mobile=Yes conversion types: {'Signup': 45, 'Chat Inquiry': 13, 'Request Demo': 8, 'Webinar Registration': 2, 'Send Reward': 2, 'Content Download': 1, 'Conference Interaction - Manual': 1}
+
+Seniority hit rate within work-email, known-company leads:
+                 size   mean
+seniority                   
+IC                265  0.260
+VP                  8  0.750
+director/head     158  0.316
+founder/C-level   304  0.352
+intern/student      1  0.000
+manager/lead      202  0.460
+unknown           342  0.132
+
+Employee band hit rate (known company, work email):
+          size   mean
+emp_band             
+1-10       282  0.206
+11-50      294  0.286
+1K-5K      105  0.229
+201-1K     190  0.332
+51-200     263  0.369
+5K+        146  0.301
+
+HubSpot grade vs outcome inside B2 by vol_picklist:
+              size   mean
+vol_picklist             
+$100K+          37  0.459
+$10K-$100K     143  0.448
+<$10K          378  0.172
+Not sure         2  0.500
+unknown        170  0.235
+
+Good leads missed by MQL (y=1, not MQL): 222 of 399
+{'B2': 187, 'B3': 14, 'A3': 9, 'C2': 7, 'C1': 5}

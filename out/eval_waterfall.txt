@@ -1,0 +1,65 @@
+train 1519 leads (dropped 19 sharing a company with test); test 477 leads over 6 months, 106 good (22.2%)
+AUC on test: HubSpot grade 0.729, waterfall 0.859, waterfall + target 0.957
+
+===== Test slice results =====
+                                          system  sent  per_month  good precision recall  wasted  wasted_per_month
+                          HubSpot MQL (A1/A2/B1)   118       19.7    45     38.1%  42.5%      73              12.2
+     Step 1 only: HubSpot MQL minus disqualified   115       19.2    45     39.1%  42.5%      70              11.7
+    Volume rule ($10K+ stated, not disqualified)   124       20.7    60     48.4%  56.6%      64              10.7
+               Waterfall, matched volume (top N)   118       19.7    63     53.4%  59.4%      55               9.2
+               Waterfall, same recall as HubSpot    60       10.0    45     75.0%  42.5%      15               2.5
+Waterfall, recommended cutoff (top 30% of train)   136       22.7    68     50.0%  64.2%      68              11.3
+     Sensitivity: waterfall + target acct, top N   118       19.7    91     77.1%  85.8%      27               4.5
+
+recommended cutoff score = 0.296
+
+===== Where the waterfall saves sales time (matched volume) =====
+  HubSpot MQLs the waterfall drops     n=  65  hit 24.6%  good=16
+  Non-MQLs the waterfall adds          n=  65  hit 52.3%  good=34
+  MQLs both send                       n=  53  hit 54.7%  good=29
+  Why dropped MQLs fall out (top reasons):
+   disqualified: {'not dq': 62, 'mobile signup': 2, 'recipient support note': 1}
+   their conversion types: {'Request Demo': 34, 'Signup': 15, 'Conference Interaction - Manual': 10, 'Conference Interaction': 2, 'Meeting Booked': 2}
+   their stated volume: {'<$10K': 40, 'unknown': 14, '$10K-$100K': 8, '$100K+': 2, 'Not sure': 1}
+  Added non-MQLs, by HubSpot grade: {'B2': 53, 'A3': 5, 'B3': 4, 'C2': 3}
+  Added non-MQLs, by stated volume: {'$10K-$100K': 35, '<$10K': 18, '$100K+': 10, 'unknown': 2}
+
+===== Disqualifier step on test slice =====
+                          n  good    hit  mql
+dq_reason                                    
+(passes)                365   105  0.288  115
+free email               63     0  0.000    0
+mobile signup            11     0  0.000    2
+recipient support note   38     1  0.026    1
+
+===== Three-way routing on test slice (cutoffs from training scores) =====
+                  n  per_month  hit_10k  ordered  good
+lane                                                  
+0 filtered out  112       18.7    0.009    0.018     1
+1 sales now     136       22.7    0.500    0.647    68
+2 watch          89       14.8    0.326    0.427    29
+3 self-serve    140       23.3    0.057    0.093     8
+
+===== Hit rate by new grade (letter from score band, test slice) =====
+              size   mean
+new_grade                
+A               54  0.778
+B               82  0.317
+C               89  0.326
+C-             140  0.057
+D (filtered)   112  0.009
+
+HubSpot by grade on the same slice:
+               size   mean
+hubspot_grade             
+A1               20  0.650
+A2               43  0.326
+A3                7  0.143
+B1               55  0.327
+B2              188  0.287
+B3                9  0.444
+C1               11  0.182
+C2              144  0.000
+
+===== Bootstrap: is the matched-volume gain real? (2,000 resamples of the test slice) =====
+  extra good leads found by waterfall vs HubSpot at matched volume: 18.0 (95% range 5 to 32); share of resamples where waterfall wins: 99.6%

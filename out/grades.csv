@@ -1,0 +1,491 @@
+lead_id,grade,score,rep_line
+L101460,D,0,Personal email. Nurture only.
+L100864,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100626,A,79,Call within a day. Why: heard via word of mouth; says $10K-$100K a year.
+L100583,B,31,Self-serve for now; reach out after a first order. Why: Procurement Manager; use case: other.
+L102461,D,0,Personal email. Nurture only.
+L102070,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101434,B,16,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; use case: marketing incentives.
+L102338,D,0,Reward recipient asking about a payment. Send to support.
+L101809,B,14,"Self-serve for now; reach out after a first order. Why: Senior Director, Business Development; requested a demo."
+L100129,C,10,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100025,C,1,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L100505,A,44,Call within a day. Why: Operations Manager; 119 employees.
+L100531,B,28,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; use case: other.
+L100117,D,0,Personal email. Nurture only.
+L100646,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101191,B,31,"Self-serve for now; reach out after a first order. Why: heard via word of mouth; 82,129 employees."
+L101294,C,4,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L102137,D,0,Personal email. Nurture only.
+L102150,D,0,Personal email. Nurture only.
+L100539,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100628,C,9,"Self-serve onboarding, no rep. Held back by: says <$10K a year; 4 employees."
+L101459,C,5,"Self-serve onboarding, no rep. Held back by: says <$10K a year; country unknown."
+L101237,D,0,Personal email. Nurture only.
+L100780,C,9,"Self-serve onboarding, no rep. Held back by: no use case given; note says $2K a year."
+L100743,A,69,Call within a day. Why: note says $20K a year; Head of Program.
+L101293,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101514,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101950,B,18,Self-serve for now; reach out after a first order. Why: Consumer Services industry; no volume given.
+L100050,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100262,B,16,Self-serve for now; reach out after a first order. Why: note says $24K a year; requested a demo.
+L100593,A,46,Call within a day. Why: Computer Software industry; no volume given.
+L101620,D,0,Personal email. Nurture only.
+L102272,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100231,C,11,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101206,A,62,Call within a day. Why: says $10K-$100K a year; Computer Software industry.
+L100997,B,25,Self-serve for now; reach out after a first order. Why: use case: other; 158 employees.
+L101898,A,67,Call within a day. Why: sent a test reward; Senior Program Manager.
+L101661,A,68,Call within a day. Why: Senior Operations Manager; says $10K-$100K a year.
+L101464,A,42,Call within a day. Why: says $10K-$100K a year; Managing Partner.
+L101847,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100396,C,10,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no use case given."
+L101727,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100233,D,0,Reward recipient asking about a payment. Send to support.
+L100207,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100636,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102147,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L101080,C,12,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100360,A,81,Call within a day. Why: note says $51K a year; Product Manager.
+L101240,D,0,Personal email. Nurture only.
+L101136,A,70,Call within a day. Why: says $10K-$100K a year; use case: other.
+L100145,A,57,Call within a day. Why: note says $55K a year; Computer Software industry.
+L101691,B,31,Self-serve for now; reach out after a first order. Why: Finance Manager; heard via youtube or online video.
+L101163,C,5,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100427,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102311,B,16,Self-serve for now; reach out after a first order. Why: heard via social media; use case: marketing incentives. Note: source 'AI Referrals' is new; the model gives it no weight.
+L101676,C,8,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100851,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100448,B,14,Self-serve for now; reach out after a first order. Why: Engineering Coordinator; says Not sure a year.
+L100017,B,14,Self-serve for now; reach out after a first order. Why: Computer Software industry; 163 employees.
+L102486,B,19,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; requested a demo.
+L100577,B,15,Self-serve for now; reach out after a first order. Why: President; 72 employees.
+L101636,B,20,Self-serve for now; reach out after a first order. Why: heard via word of mouth; Computer Software industry.
+L101172,A,64,Call within a day. Why: heard via search engine; sent a test reward.
+L101220,A,68,Call within a day. Why: note says $36K a year; Senior Growth Marketing Manager.
+L100046,C,4,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102459,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101368,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100854,B,23,Self-serve for now; reach out after a first order. Why: Senior Data Manager; 258 employees.
+L100104,B,19,"Self-serve for now; reach out after a first order. Why: heard via word of mouth; COO. Note: partner referral, a lead type the model hasn't seen; check by hand."
+L101608,A,77,Call within a day. Why: heard via search engine; says $10K-$100K a year.
+L100236,B,16,Self-serve for now; reach out after a first order. Why: Data Coordinator; 122 employees.
+L100512,D,0,Reward recipient asking about a payment. Send to support.
+L100957,B,18,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; requested a demo.
+L100211,C,1,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L100588,A,41,Call within a day. Why: heard via search engine; says $100K+ a year.
+L100322,A,86,Call within a day. Why: heard via search engine; says $10K-$100K a year.
+L100301,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101097,C,7,"Self-serve onboarding, no rep. Held back by: says <$10K a year; no use case given."
+L101211,C,7,"Self-serve onboarding, no rep. Held back by: says <$10K a year; 1 employees."
+L100304,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102463,D,0,Reward recipient asking about a payment. Send to support.
+L101848,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101182,B,24,Self-serve for now; reach out after a first order. Why: Operations Lead; Hospital Health Care industry.
+L100428,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100808,A,55,Call within a day. Why: says $10K-$100K a year; use case: other.
+L101006,C,8,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; says <$10K a year."
+L101413,B,28,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; Co-Founder.
+L102462,A,33,Call within a day. Why: Senior Customer Success Manager; downloaded content.
+L101677,D,0,Personal email. Nurture only.
+L101798,B,15,Self-serve for now; reach out after a first order. Why: use case: research compensation; Data Generalist.
+L101534,D,0,Personal email. Nurture only.
+L101377,B,27,Self-serve for now; reach out after a first order. Why: note says $564K a year; COO.
+L102326,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101303,D,0,Personal email. Nurture only.
+L101281,D,0,Personal email. Nurture only.
+L101250,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100782,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102352,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100450,B,30,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; Managing Partner.
+L101937,C,13,"Self-serve onboarding, no rep. Held back by: says <$10K a year; didn't say how they heard of us."
+L100776,B,21,Self-serve for now; reach out after a first order. Why: Program Coordinator; downloaded content.
+L100756,B,27,Self-serve for now; reach out after a first order. Why: Real Estate industry; 213 employees.
+L101382,B,28,Self-serve for now; reach out after a first order. Why: Growth Marketing Coordinator; 149 employees.
+L101804,B,21,Self-serve for now; reach out after a first order. Why: use case: research compensation; Demand Generation Lead.
+L102011,B,26,Self-serve for now; reach out after a first order. Why: 135 employees; Hospital Health Care industry.
+L101788,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101326,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101330,C,6,"Self-serve onboarding, no rep. Held back by: no job title; country unknown."
+L100771,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100181,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100645,D,0,Personal email. Nurture only.
+L100566,B,30,Self-serve for now; reach out after a first order. Why: Director of Demand Generation; 107 employees.
+L101751,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101560,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102180,C,8,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L102124,A,90,Call within a day. Why: VP of Growth Marketing; heard via search engine.
+L102255,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101184,A,72,Call within a day. Why: says $10K-$100K a year; use case: other.
+L100187,A,70,Call within a day. Why: note says $228K a year; use case: other.
+L101658,B,13,Self-serve for now; reach out after a first order. Why: Partnerships Lead; Business Supplies and Equipment industry.
+L101964,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101334,A,52,Call within a day. Why: note says $28K a year; use case: other.
+L100802,D,0,Reward recipient asking about a payment. Send to support.
+L101791,C,6,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no use case given."
+L100602,C,4,"Self-serve onboarding, no rep. Held back by: no use case given; toured the recipient demo."
+L102478,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101394,A,84,Call within a day. Why: says $100K+ a year; Real Estate industry.
+L101513,D,0,Personal email. Nurture only.
+L100085,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L100340,C,13,"Self-serve onboarding, no rep. Held back by: says <$10K a year; company size unknown."
+L100707,D,0,Personal email. Nurture only.
+L102140,A,49,"Call within a day. Why: says $10K-$100K a year; Senior Director, Talent."
+L101431,A,37,Call within a day. Why: heard via word of mouth; use case: research compensation.
+L101853,C,10,"Self-serve onboarding, no rep. Held back by: no job title; country unknown."
+L100444,D,0,Reward recipient asking about a payment. Send to support.
+L101486,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100353,C,3,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L101654,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100249,C,8,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100968,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100896,A,59,Call within a day. Why: says $100K+ a year; Computer Software industry.
+L100644,B,20,Self-serve for now; reach out after a first order. Why: use case: research compensation; COO.
+L100169,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101440,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101337,A,41,Call within a day. Why: note says $180K a year; Business Coordinator.
+L102164,D,0,Personal email. Nurture only.
+L102021,D,0,Reward recipient asking about a payment. Send to support.
+L101195,B,18,Self-serve for now; reach out after a first order. Why: use case: research compensation; 718 employees.
+L100079,A,50,Call within a day. Why: heard via search engine; note says $44K a year.
+L100138,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101224,B,18,Self-serve for now; reach out after a first order. Why: use case: research compensation; Director of Partnerships.
+L100282,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101518,B,30,Self-serve for now; reach out after a first order. Why: use case: other; heard via platform integration or partner vendor.
+L101564,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101173,D,0,Personal email. Nurture only.
+L101296,B,27,Self-serve for now; reach out after a first order. Why: Office Lead; 150 employees.
+L101713,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101945,C,8,"Self-serve onboarding, no rep. Held back by: no use case given; note says $6K a year."
+L100274,D,0,Personal email. Nurture only.
+L102265,C,2,"Self-serve onboarding, no rep. Held back by: no job title; note says $7K a year."
+L100737,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100199,C,2,"Self-serve onboarding, no rep. Held back by: no job title; note says $8K a year."
+L102088,D,0,Reward recipient asking about a payment. Send to support.
+L101261,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101376,D,0,Personal email. Nurture only.
+L100167,A,39,Call within a day. Why: Office Lead; requested a demo.
+L102065,A,39,Call within a day. Why: heard via search engine; says $100K+ a year.
+L101748,B,16,Self-serve for now; reach out after a first order. Why: heard via social media; Consumer Services industry.
+L100344,D,0,Personal email. Nurture only.
+L101181,D,0,Personal email. Nurture only.
+L100004,B,25,Self-serve for now; reach out after a first order. Why: heard via search engine; note says $15K a year.
+L101980,A,88,Call within a day. Why: sent a test reward; heard via search engine.
+L100916,D,0,Personal email. Nurture only.
+L102496,B,23,Self-serve for now; reach out after a first order. Why: no volume given; meeting booked.
+L102357,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101272,B,13,Self-serve for now; reach out after a first order. Why: Operations Director; US company.
+L101005,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101973,D,0,Personal email. Nurture only.
+L100142,A,68,Call within a day. Why: use case: research compensation; note says $72K a year.
+L100647,C,3,"Self-serve onboarding, no rep. Held back by: no job title; note says $2K a year."
+L100616,D,0,Personal email. Nurture only.
+L101059,A,38,"Call within a day. Why: use case: research compensation; Senior Director, Operations."
+L101137,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L101845,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100480,C,6,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L100254,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100131,B,14,Self-serve for now; reach out after a first order. Why: use case: other; Business Development Associate.
+L100198,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L102387,B,15,Self-serve for now; reach out after a first order. Why: Computer Software industry; Business Director.
+L101835,D,0,Personal email. Nurture only.
+L100704,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101406,C,1,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101292,C,11,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101167,B,28,Self-serve for now; reach out after a first order. Why: Computer Software industry; via direct.
+L101241,A,74,Call within a day. Why: use case: research compensation; note says $20K a year.
+L100277,A,55,Call within a day. Why: heard via search engine; Computer Software industry.
+L101219,B,27,Self-serve for now; reach out after a first order. Why: Customer Success Manager; 340 employees.
+L101605,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100826,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100339,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101575,A,69,Call within a day. Why: Program Manager; says $10K-$100K a year.
+L100657,C,2,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L100658,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100514,D,0,Reward recipient asking about a payment. Send to support.
+L101631,B,21,Self-serve for now; reach out after a first order. Why: no volume given; requested a demo.
+L102355,A,79,Call within a day. Why: Program Manager; says $10K-$100K a year.
+L100341,A,51,Call within a day. Why: says $100K+ a year; heard via social media.
+L100652,B,13,Self-serve for now; reach out after a first order. Why: President; use case: marketing incentives.
+L100418,A,57,Call within a day. Why: heard via search engine; says $100K+ a year.
+L101374,A,58,Call within a day. Why: Senior Program Manager; Computer Software industry.
+L102165,C,8,"Self-serve onboarding, no rep. Held back by: no use case given; note says $2K a year."
+L102271,B,18,Self-serve for now; reach out after a first order. Why: 303 employees; no volume given.
+L101571,D,0,Personal email. Nurture only.
+L101613,A,59,Call within a day. Why: Operations Manager; says $10K-$100K a year.
+L100319,A,69,Call within a day. Why: note says $72K a year; Senior Sales Manager.
+L101269,D,0,Reward recipient asking about a payment. Send to support.
+L100594,D,0,Personal email. Nurture only.
+L101923,D,0,Reward recipient asking about a payment. Send to support.
+L102197,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100416,C,4,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L101115,C,8,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102337,B,14,Self-serve for now; reach out after a first order. Why: Administration Coordinator; 116 employees.
+L101178,A,82,Call within a day. Why: heard via search engine; Community Lead.
+L101783,A,85,Call within a day. Why: heard via search engine; use case: research compensation.
+L101164,A,89,Call within a day. Why: heard via word of mouth; HR Manager.
+L102023,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100787,A,59,Call within a day. Why: says $100K+ a year; use case: other.
+L101011,A,34,Call within a day. Why: Business Lead; use case: other.
+L101142,B,30,Self-serve for now; reach out after a first order. Why: note says $60K a year; heard via youtube or online video.
+L100270,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L102480,C,10,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102145,C,4,"Self-serve onboarding, no rep. Held back by: says <$10K a year; country unknown."
+L100633,B,16,Self-serve for now; reach out after a first order. Why: Growth Marketing Director; requested a demo.
+L102404,C,9,"Self-serve onboarding, no rep. Held back by: no job title; note says $6K a year."
+L100086,C,12,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100714,B,23,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; Business Director.
+L101803,A,66,Call within a day. Why: Community Lead; says $10K-$100K a year.
+L100154,C,4,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100671,D,0,Personal email. Nurture only.
+L102252,B,27,Self-serve for now; reach out after a first order. Why: note says $136K a year; use case: other.
+L100951,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101479,A,44,Call within a day. Why: heard via word of mouth; Senior Administration Manager.
+L101473,C,5,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100848,A,36,Call within a day. Why: use case: other; 241 employees.
+L100055,D,0,Personal email. Nurture only.
+L102458,C,5,"Self-serve onboarding, no rep. Held back by: via paid social; Higher Education industry."
+L100544,B,31,Self-serve for now; reach out after a first order. Why: use case: research compensation; says $10K-$100K a year.
+L100157,A,77,Call within a day. Why: use case: research compensation; note says $14K a year.
+L101616,A,69,Call within a day. Why: note says $142K a year; 484 employees.
+L102130,C,9,"Self-serve onboarding, no rep. Held back by: says <$10K a year; 1 employees."
+L101976,A,81,Call within a day. Why: note says $72K a year; emailed in.
+L100327,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L102321,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101952,A,85,Call within a day. Why: heard via word of mouth; HR Manager.
+L101929,C,1,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L100250,C,9,"Self-serve onboarding, no rep. Held back by: no job title; note says $2K a year."
+L102139,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100124,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101331,D,0,Personal email. Nurture only.
+L100815,C,5,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; says <$10K a year."
+L101268,C,7,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; says <$10K a year."
+L102218,D,0,Reward recipient asking about a payment. Send to support.
+L100003,A,43,Call within a day. Why: says $10K-$100K a year; Owner.
+L101046,D,0,Personal email. Nurture only.
+L101770,B,27,Self-serve for now; reach out after a first order. Why: heard via current or former customer; says $10K-$100K a year.
+L102288,C,7,"Self-serve onboarding, no rep. Held back by: says <$10K a year; 10 employees."
+L100643,D,0,Personal email. Nurture only.
+L100393,A,52,Call within a day. Why: heard via search engine; Founder.
+L100918,B,19,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; via direct.
+L102397,B,22,Self-serve for now; reach out after a first order. Why: IT Lead; via direct.
+L101784,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100820,C,3,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L101987,C,9,"Self-serve onboarding, no rep. Held back by: no job title; country unknown."
+L101470,D,0,Reward recipient asking about a payment. Send to support.
+L100573,D,0,Personal email. Nurture only.
+L102347,C,5,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; says <$10K a year."
+L101305,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101248,A,65,Call within a day. Why: use case: research compensation; Demand Generation Manager.
+L102189,D,0,Personal email. Nurture only.
+L101429,B,22,Self-serve for now; reach out after a first order. Why: use case: research compensation; says $10K-$100K a year.
+L100518,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102333,C,7,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100810,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100835,C,11,"Self-serve onboarding, no rep. Held back by: no use case given; note says $6K a year."
+L101357,B,18,Self-serve for now; reach out after a first order. Why: Computer Software industry; Co-Founder.
+L100033,A,34,Call within a day. Why: says $10K-$100K a year; COO.
+L102392,D,0,Reward recipient asking about a payment. Send to support.
+L102044,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101203,A,39,Call within a day. Why: Computer Software industry; 695 employees.
+L100841,C,4,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101595,B,15,Self-serve for now; reach out after a first order. Why: use case: other; Senior Administration Specialist.
+L101416,C,9,"Self-serve onboarding, no rep. Held back by: says <$10K a year; non-US company."
+L101913,C,6,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100926,A,33,Call within a day. Why: says $10K-$100K a year; Computer Software industry.
+L101483,D,0,Personal email. Nurture only.
+L100745,D,0,Personal email. Nurture only.
+L100596,D,0,Personal email. Nurture only.
+L100570,A,60,Call within a day. Why: note says $27K a year; heard via social media.
+L100880,A,65,Call within a day. Why: use case: research compensation; Research Lead.
+L101651,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101588,B,23,Self-serve for now; reach out after a first order. Why: Head of Accounting; via direct.
+L101971,A,35,Call within a day. Why: Senior Office Manager; 301 employees.
+L100324,C,10,"Self-serve onboarding, no rep. Held back by: note says $2K a year; toured the recipient demo."
+L101723,B,13,Self-serve for now; reach out after a first order. Why: Computer Software industry; use case: other.
+L102151,B,15,Self-serve for now; reach out after a first order. Why: Owner; 112 employees.
+L100347,B,28,Self-serve for now; reach out after a first order. Why: 269 employees; Head of Growth Marketing.
+L101316,D,0,Personal email. Nurture only.
+L101019,B,23,Self-serve for now; reach out after a first order. Why: Computer Software industry; 103 employees.
+L101236,B,27,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; heard via social media.
+L100829,A,69,Call within a day. Why: heard via search engine; Customer Success Lead.
+L100972,A,48,Call within a day. Why: use case: research compensation; says $10K-$100K a year.
+L100467,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101345,A,41,Call within a day. Why: heard via current or former customer; Hospital Health Care industry.
+L100859,A,55,Call within a day. Why: use case: research compensation; says $10K-$100K a year. Note: source 'AI Referrals' is new; the model gives it no weight.
+L100182,A,35,Call within a day. Why: use case: research compensation; says $10K-$100K a year.
+L102320,C,9,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100380,A,63,Call within a day. Why: says $100K+ a year; Operations Manager.
+L101014,A,33,Call within a day. Why: Computer Software industry; Director of Administration.
+L100605,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102102,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101487,D,0,Reward recipient asking about a payment. Send to support.
+L102073,C,7,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100346,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100784,B,17,Self-serve for now; reach out after a first order. Why: Computer Software industry; Co-Founder.
+L101662,C,5,"Self-serve onboarding, no rep. Held back by: note says $6K a year; via other campaigns."
+L100463,A,57,Call within a day. Why: says $100K+ a year; requested a demo.
+L100127,C,3,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no use case given."
+L101519,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101814,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100733,C,9,"Self-serve onboarding, no rep. Held back by: note says $2K a year; toured the recipient demo."
+L101960,A,34,Call within a day. Why: note says $49K a year; requested a demo.
+L100106,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101990,C,7,"Self-serve onboarding, no rep. Held back by: no job title; note says $3K a year."
+L100134,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L101922,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100287,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L102096,A,39,Call within a day. Why: 269 employees; Head of Growth Marketing.
+L101732,D,0,Personal email. Nurture only.
+L101400,C,6,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L101183,C,8,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100103,C,2,"Self-serve onboarding, no rep. Held back by: Information Technology and Services industry; no job title."
+L101704,C,12,"Self-serve onboarding, no rep. Held back by: says <$10K a year; didn't say how they heard of us."
+L101218,A,49,Call within a day. Why: use case: research compensation; says $10K-$100K a year.
+L101424,C,12,"Self-serve onboarding, no rep. Held back by: no use case given; 5 employees."
+L100967,B,18,Self-serve for now; reach out after a first order. Why: 52 employees; via direct.
+L102115,B,30,Self-serve for now; reach out after a first order. Why: meeting booked; Head of Customer Success.
+L102066,A,55,Call within a day. Why: says $10K-$100K a year; use case: other.
+L100442,C,6,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101496,C,8,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100935,C,8,"Self-serve onboarding, no rep. Held back by: no use case given; conference interaction - manual."
+L101844,A,63,Call within a day. Why: note says $288K a year; use case: other.
+L100545,D,0,Personal email. Nurture only.
+L100424,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101129,D,0,Personal email. Nurture only.
+L100891,B,13,Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; use case: other.
+L101500,B,20,Self-serve for now; reach out after a first order. Why: 352 employees; requested a demo.
+L102396,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100674,A,67,"Call within a day. Why: Partnerships Lead; asked about pricing, no volume given."
+L102086,B,14,Self-serve for now; reach out after a first order. Why: via direct; no volume given.
+L102244,A,40,Call within a day. Why: says $10K-$100K a year; use case: other.
+L100253,B,18,Self-serve for now; reach out after a first order. Why: Computer Software industry; no volume given.
+L100607,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100376,B,27,Self-serve for now; reach out after a first order. Why: says $100K+ a year; via direct.
+L102206,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101900,A,50,Call within a day. Why: use case: research compensation; Senior Administration Manager.
+L100635,D,0,Personal email. Nurture only.
+L100766,B,25,Self-serve for now; reach out after a first order. Why: Employee Experience Lead; 839 employees.
+L102336,C,10,"Self-serve onboarding, no rep. Held back by: no job title; country unknown."
+L100218,D,0,Personal email. Nurture only.
+L101671,B,17,Self-serve for now; reach out after a first order. Why: use case: research compensation; 155 employees.
+L101988,C,6,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100791,A,67,Call within a day. Why: heard via word of mouth; Growth Marketing Lead.
+L100961,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100799,C,3,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L100202,A,47,Call within a day. Why: heard via received a tremendous reward; Computer Software industry.
+L101904,C,11,"Self-serve onboarding, no rep. Held back by: says <$10K a year; 9 employees."
+L102007,B,13,Self-serve for now; reach out after a first order. Why: VP of Community; use case: marketing incentives.
+L101029,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101347,A,75,Call within a day. Why: use case: research compensation; note says $27K a year.
+L101859,A,47,Call within a day. Why: says $10K-$100K a year; Head of Administration.
+L101361,C,7,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102294,A,39,Call within a day. Why: says $10K-$100K a year; Computer Software industry.
+L101780,A,60,Call within a day. Why: note says $504K a year; Owner.
+L102110,C,1,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100293,C,7,"Self-serve onboarding, no rep. Held back by: says <$10K a year; no use case given."
+L101109,C,6,"Self-serve onboarding, no rep. Held back by: no job title; country unknown."
+L100455,B,23,Self-serve for now; reach out after a first order. Why: 51 employees; requested a demo.
+L100140,A,60,Call within a day. Why: Growth Marketing Manager; says $10K-$100K a year.
+L102001,A,66,Call within a day. Why: Administration Lead; says $10K-$100K a year.
+L101197,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102032,C,3,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100189,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100863,A,85,Call within a day. Why: heard via word of mouth; note says $23K a year.
+L100529,A,48,Call within a day. Why: says $10K-$100K a year; Founder.
+L101894,A,65,Call within a day. Why: use case: research compensation; Program Lead.
+L100952,A,42,Call within a day. Why: use case: research compensation; Senior Program Manager.
+L100475,C,2,"Self-serve onboarding, no rep. Held back by: via paid social; Information Technology and Services industry."
+L102295,C,8,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L101749,B,25,Self-serve for now; reach out after a first order. Why: Employee Experience Lead; 839 employees.
+L100313,C,11,"Self-serve onboarding, no rep. Held back by: no use case given; Management Consulting industry."
+L101523,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100234,C,9,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100632,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102168,C,11,"Self-serve onboarding, no rep. Held back by: no use case given; conference interaction - manual."
+L101830,C,4,"Self-serve onboarding, no rep. Held back by: via paid social; Information Technology and Services industry."
+L100053,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100708,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101158,B,18,Self-serve for now; reach out after a first order. Why: Director of Demand Generation; 129 employees.
+L102097,A,72,Call within a day. Why: heard via search engine; says $10K-$100K a year.
+L101225,A,40,Call within a day. Why: says $10K-$100K a year; use case: other.
+L100382,C,6,"Self-serve onboarding, no rep. Held back by: no job title; 6 employees."
+L100620,B,23,Self-serve for now; reach out after a first order. Why: use case: research compensation; Hospital Health Care industry.
+L100434,B,19,Self-serve for now; reach out after a first order. Why: Senior Partnerships Manager; Hospital Health Care industry.
+L100798,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101426,C,4,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L102226,D,0,Personal email. Nurture only.
+L100334,C,11,"Self-serve onboarding, no rep. Held back by: no use case given; via offline."
+L100147,A,74,Call within a day. Why: use case: research compensation; says $10K-$100K a year.
+L101069,C,4,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100775,A,49,Call within a day. Why: says $10K-$100K a year; use case: other.
+L102246,C,6,"Self-serve onboarding, no rep. Held back by: no use case given; country unknown."
+L100899,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101880,B,28,Self-serve for now; reach out after a first order. Why: heard via search engine; note says $204K a year.
+L101890,A,46,"Call within a day. Why: note says $22K a year; Senior Director, Customer Success."
+L100298,A,33,Call within a day. Why: note says $35K a year; HR Lead.
+L100337,B,25,Self-serve for now; reach out after a first order. Why: Senior Business Manager; 205 employees.
+L100365,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100730,C,8,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L102062,A,70,Call within a day. Why: heard via word of mouth; use case: research compensation.
+L100410,B,18,Self-serve for now; reach out after a first order. Why: heard via search engine; use case: marketing incentives.
+L101619,C,11,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102100,A,42,Call within a day. Why: heard via search engine; President.
+L100171,A,76,Call within a day. Why: heard via search engine; says $10K-$100K a year.
+L101093,A,39,Call within a day. Why: Real Estate industry; heard via other.
+L101566,B,26,Self-serve for now; reach out after a first order. Why: requested a demo; 51 employees.
+L100598,C,12,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102498,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100567,D,0,Personal email. Nurture only.
+L101515,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101625,D,0,Personal email. Nurture only.
+L100987,C,4,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L102371,D,0,Reward recipient asking about a payment. Send to support.
+L101511,B,15,Self-serve for now; reach out after a first order. Why: heard via word of mouth; use case: research compensation.
+L101943,C,6,"Self-serve onboarding, no rep. Held back by: via paid social; no use case given."
+L100246,D,0,Personal email. Nurture only.
+L101139,A,53,Call within a day. Why: use case: research compensation; note says $76K a year.
+L102184,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L100421,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100592,D,0,Personal email. Nurture only.
+L100139,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100112,C,8,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100284,D,0,Personal email. Nurture only.
+L100681,C,4,"Self-serve onboarding, no rep. Held back by: no job title; note says $4K a year."
+L102422,A,52,Call within a day. Why: says $10K-$100K a year; Co-Founder.
+L101728,D,0,Personal email. Nurture only.
+L102267,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101186,A,37,Call within a day. Why: heard via search engine; note says $68K a year.
+L100571,C,8,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L102428,B,15,"Self-serve for now; reach out after a first order. Why: says $10K-$100K a year; Retail industry. Note: client referral, a lead type the model hasn't seen; check by hand."
+L100867,C,2,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100522,D,0,Personal email. Nurture only.
+L100272,A,38,Call within a day. Why: use case: research compensation; 369 employees.
+L100536,C,2,"Self-serve onboarding, no rep. Held back by: Higher Education industry; no job title."
+L102315,B,17,Self-serve for now; reach out after a first order. Why: Head of Program; via direct.
+L102415,C,3,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101517,B,21,Self-serve for now; reach out after a first order. Why: Retail industry; Founder.
+L102310,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L102332,D,0,Personal email. Nurture only.
+L101262,C,10,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100660,C,2,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100228,A,50,Call within a day. Why: heard via word of mouth; says $10K-$100K a year.
+L100363,C,9,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L101328,A,60,Call within a day. Why: heard via search engine; note says $84K a year.
+L102028,C,6,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100827,A,55,Call within a day. Why: use case: research compensation; says $100K+ a year.
+L102179,B,20,Self-serve for now; reach out after a first order. Why: heard via search engine; use case: marketing incentives.
+L100296,B,30,Self-serve for now; reach out after a first order. Why: use case: research compensation; no volume given.
+L101606,C,1,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L101508,B,27,Self-serve for now; reach out after a first order. Why: Growth Marketing Lead; 149 employees.
+L100191,B,15,Self-serve for now; reach out after a first order. Why: use case: research compensation; Senior Engineering Manager.
+L101873,C,8,"Self-serve onboarding, no rep. Held back by: no job title; note says $3K a year."
+L102235,A,37,Call within a day. Why: says $10K-$100K a year; 186 employees.
+L100447,C,5,"Self-serve onboarding, no rep. Held back by: no job title; says <$10K a year."
+L100029,C,5,"Self-serve onboarding, no rep. Held back by: no job title; no use case given."
+L100923,B,27,Self-serve for now; reach out after a first order. Why: use case: research compensation; President.
+L101897,C,9,"Self-serve onboarding, no rep. Held back by: no job title; industry unknown."
+L102043,A,48,Call within a day. Why: use case: research compensation; says $10K-$100K a year.
+L101759,A,47,Call within a day. Why: use case: research compensation; Growth Marketing Manager.
+L102052,D,0,Mobile signup; past mobile signups never reached $10K. Nurture only.
+L101775,A,45,Call within a day. Why: Senior Operations Manager; says $10K-$100K a year.

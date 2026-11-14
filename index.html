@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lead Scoring Model</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>
+/* Direction: a Notion page. Values read from live notion.site pages (Nov 2026):
+   system sans stack, 16/24 body, 40px/700 title, 708px column, warm off-black ink,
+   simple tables with hairline borders. One accent (Notion blue) for the active control only.
+   Yellow highlight = value still to fill. Build notes are one quiet gray line; slide notes sit under the slide. */
+:root {
+  --bg: #ffffff;
+  --ink: rgb(44, 44, 43);
+  --ink-2: #73726e;
+  --line: rgb(233, 233, 231);
+  --line-strong: rgba(55, 53, 47, 0.16);
+  --soft: rgb(249, 248, 247);
+  --head: rgb(247, 246, 243);
+  --hover: rgba(55, 53, 47, 0.06);
+  --accent: rgb(35, 131, 226);
+  --on-accent: #ffffff;
+  --hl: rgb(251, 243, 219);
+  --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #191919; --ink: rgb(240, 239, 237); --ink-2: #9b9a97; --line: rgb(47, 47, 47);
+    --line-strong: rgba(255, 255, 255, 0.13); --soft: rgb(37, 37, 37); --head: rgb(32, 32, 32);
+    --hover: rgba(255, 255, 255, 0.06); --accent: rgb(82, 156, 236); --on-accent: #191919;
+    --hl: rgb(72, 62, 36);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #191919; --ink: rgb(240, 239, 237); --ink-2: #9b9a97; --line: rgb(47, 47, 47);
+  --line-strong: rgba(255, 255, 255, 0.13); --soft: rgb(37, 37, 37); --head: rgb(32, 32, 32);
+  --hover: rgba(255, 255, 255, 0.06); --accent: rgb(82, 156, 236); --on-accent: #191919;
+  --hl: rgb(72, 62, 36);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 var(--font); -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 3px; }
+a { color: inherit; text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 2px; }
+a:hover { text-decoration-color: currentColor; }
+h1, h2 { text-wrap: balance; }
+p { margin: 0; }
+
+.wrap {
+  width: 100%; max-width: calc(708px + 2 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Top bar: breadcrumb left, view controls right */
+.bar {
+  position: sticky; top: 0; z-index: 5; background: var(--bg);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.bar .inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap;
+  min-height: 45px; padding: 6px max(12px, env(safe-area-inset-left, 0px));
+  font-size: 14px;
+}
+.crumb { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.crumb b { color: var(--ink); font-weight: 400; }
+.controls { display: flex; align-items: center; gap: 12px; }
+.modes { display: inline-flex; gap: 2px; }
+.modes button {
+  font: 14px/1 var(--font); color: var(--ink-2);
+  min-height: 32px; padding: 0 10px; border: 0; border-radius: 6px; background: transparent; cursor: pointer;
+}
+.modes button:hover { background: var(--hover); }
+.modes button[aria-pressed="true"] { background: var(--hover); color: var(--ink); font-weight: 500; }
+.toggle { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); cursor: pointer; min-height: 32px; }
+.switch {
+  appearance: none; margin: 0; flex-shrink: 0; cursor: pointer;
+  width: 30px; height: 18px; border-radius: 99px; background: var(--line-strong); position: relative;
+  transition: background 0.15s;
+}
+.switch::before {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; transition: transform 0.15s;
+}
+.switch:checked { background: var(--accent); }
+.switch:checked::before { transform: translateX(12px); }
+
+/* Page header */
+.page-head { padding-top: clamp(32px, 8vw, 72px); }
+.page-head h1 { margin: 0 0 12px; font-size: 40px; line-height: 1.2; font-weight: 700; }
+@media (max-width: 520px) { .page-head h1 { font-size: 32px; } }
+.props { display: grid; grid-template-columns: 140px 1fr; gap: 2px 8px; font-size: 14px; margin: 0; }
+.props dt { color: var(--ink-2); padding: 5px 0; display: flex; align-items: center; gap: 6px; }
+.props dt svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.props dd { margin: 0; padding: 5px 0; }
+hr.rule { border: 0; border-top: 1px solid var(--line); margin: 16px 0 24px; }
+
+/* Blocks */
+main.read { padding-bottom: 120px; }
+section.block { display: flex; flex-direction: column; gap: 10px; margin-top: 36px; scroll-margin-top: 64px; }
+section.block:first-of-type { margin-top: 0; }
+section.block > h2 { margin: 0; font-size: 24px; line-height: 1.3; font-weight: 600; }
+.muted { color: var(--ink-2); font-size: 14px; }
+
+/* Build note: one quiet line, hidden when the switch is off */
+.note { font-size: 13px; line-height: 1.45; color: var(--ink-2); display: flex; gap: 6px; align-items: baseline; }
+.note::before { content: "Note"; flex-shrink: 0; font-weight: 500; }
+.note code { font: 12px var(--mono); }
+body:not(.notes) .note { display: none; }
+
+/* Highlight: a value still to come from the build */
+.fill {
+  background: var(--hl); border-radius: 3px; padding: 0 3px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+
+/* Simple table */
+.tbl { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; vertical-align: top; padding: 7px 9px; border: 1px solid var(--line); }
+thead th { background: var(--head); font-weight: 500; white-space: nowrap; }
+td.n, th.n { text-align: right; }
+td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.tpl td { color: var(--ink-2); }
+tr.tpl code { font: 13px var(--mono); background: var(--hover); border-radius: 3px; padding: 0 3px; white-space: nowrap; }
+.tag {
+  display: inline-block; padding: 0 6px; border-radius: 3px; font-size: 14px; line-height: 20px; font-weight: 500;
+  background: var(--hover); white-space: nowrap;
+}
+.tag.top { background: var(--accent); color: var(--on-accent); }
+
+/* Flow: how a lead moves through the build */
+.flow { display: flex; align-items: stretch; gap: 6px; }
+.step {
+  flex: 1 1 0; min-width: 0; border: 1px solid var(--line-strong); border-radius: 6px;
+  padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; font-size: 14px;
+}
+.step b { font-weight: 600; }
+.step span { color: var(--ink-2); font-size: 13px; line-height: 1.4; }
+.step.llm { background: var(--soft); }
+.arrow { align-self: center; color: var(--ink-2); flex: 0 0 auto; }
+.arrow svg { width: 12px; height: 12px; display: block; stroke: currentColor; fill: none; stroke-width: 1.5; }
+@media (max-width: 640px) {
+  .flow { flex-direction: column; }
+  .arrow svg { transform: rotate(90deg); }
+}
+
+ul.plain, ol.plain { margin: 0; padding-left: 1.6em; display: flex; flex-direction: column; gap: 4px; }
+ul.plain li, ol.plain li { padding-left: 2px; }
+
+/* Toggle block */
+details.toggle-block summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 4px;
+  min-height: 30px; margin-left: -4px; padding: 2px 4px; border-radius: 4px; width: fit-content;
+}
+details.toggle-block summary:hover { background: var(--hover); }
+details.toggle-block summary::-webkit-details-marker { display: none; }
+details.toggle-block summary svg { width: 12px; height: 12px; fill: var(--ink); transition: transform 0.12s; }
+details.toggle-block[open] summary svg { transform: rotate(90deg); }
+details.toggle-block .body { padding: 6px 0 0 20px; display: flex; flex-direction: column; gap: 10px; }
+pre.log {
+  margin: 0; font: 13px/1.6 var(--mono); white-space: pre-wrap; color: var(--ink);
+  background: var(--head); border-radius: 6px; padding: 16px; overflow-x: auto;
+}
+
+/* Present mode */
+main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 24px 48px; max-width: 1000px; }
+.slide {
+  border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg);
+  aspect-ratio: 16 / 9; width: 100%;
+  padding: clamp(20px, 5vw, 64px); display: flex; flex-direction: column; justify-content: center; gap: clamp(12px, 2vw, 24px);
+  overflow: auto;
+}
+.slide h2 { margin: 0; font-size: clamp(26px, 4.4vw, 44px); line-height: 1.15; font-weight: 700; }
+.slide .big { font-size: clamp(17px, 2.4vw, 24px); line-height: 1.45; }
+.slide .tbl table { font-size: clamp(14px, 1.8vw, 18px); }
+.teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.team { border: 1px solid var(--line-strong); border-radius: 6px; padding: 10px 12px; display: flex; flex-direction: column; gap: 2px; min-width: 0; font-size: 14px; }
+.team b { font-weight: 600; }
+.repline { font: clamp(13px, 1.6vw, 15px)/1.5 var(--mono); background: var(--head); border-radius: 6px; padding: 10px 14px; }
+.slidenav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.slidenav button {
+  min-height: 36px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 6px;
+  background: var(--bg); color: var(--ink); font: 14px var(--font); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.slidenav button:hover:not(:disabled) { background: var(--hover); }
+.slidenav button:disabled { color: var(--ink-2); cursor: default; }
+.slidenav button svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.slidenav .count { font-size: 14px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .slide { aspect-ratio: auto; min-height: 60vh; } }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 12 12"><path d="M2 6h8M7 3l3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tri" viewBox="0 0 12 12"><path d="M4 2.5 8.5 6 4 9.5z"/></symbol>
+</svg>
+
+<header class="bar">
+  <div class="inner">
+    <div class="crumb">Tremendous take-home / <b>Lead scoring model</b></div>
+    <div class="controls">
+      <div class="modes" role="group" aria-label="View">
+        <button type="button" id="mode-read" data-mode="read" aria-pressed="true">Read</button>
+        <button type="button" id="mode-present" data-mode="present" aria-pressed="false">Present</button>
+      </div>
+      <label class="toggle" for="notes-toggle">
+        <input type="checkbox" class="switch" role="switch" id="notes-toggle" checked>
+        Speaker notes
+      </label>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ READ ============================ -->
+<main class="read wrap" id="read">
+  <div class="page-head">
+    <h1>Lead scoring model</h1>
+    <dl class="props">
+      <dt><svg viewBox="0 0 14 14"><circle cx="7" cy="4.5" r="2.5"/><path d="M2 12.5c.8-2.4 2.7-3.5 5-3.5s4.2 1.1 5 3.5"/></svg>Author</dt><dd>Spencer Wood</dd>
+      <dt><svg viewBox="0 0 14 14"><rect x="1.5" y="3.5" width="11" height="8" rx="1.5"/><path d="M5 3.5V2h4v1.5"/></svg>For</dt><dd>Tremendous, GTM Engineer take-home</dd>
+      <dt><svg viewBox="0 0 14 14"><rect x="1.5" y="2.5" width="11" height="10" rx="1.5"/><path d="M1.5 5.5h11M4.5 1v3M9.5 1v3"/></svg>Date</dt><dd>November 14, 2026</dd>
+    </dl>
+    <hr class="rule">
+  </div>
+
+  <section class="block" id="summary" aria-label="Summary">
+    <p>I built a three-step lead waterfall. It filters out leads that almost never buy, scores the rest, and sends each one to sales or tags it for a watch list or self-serve. On the last six months of past leads, held out from training, it found 63 good leads where HubSpot's MQL rule found 45. Both sent sales 118 leads. All 490 newer leads are graded, each with a rep line, in <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/out/grades.csv">grades.csv</a>.</p>
+  </section>
+
+  <section class="block" id="built">
+    <h2>Three-step lead scoring waterfall</h2>
+    <div class="flow" aria-label="How a lead becomes a grade">
+      <div class="step"><b>Filter out</b><span>Free email, reward recipients asking for help, mobile signups</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Score</b><span>Logistic regression trained on past leads</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Route and grade</b><span>Sales, watch list or self-serve, with a rep line</span></div>
+    </div>
+    <ol class="plain">
+      <li>Filter out free email, reward recipients asking for help, and mobile signups. These leads almost never buy. Free email leads reached $10K 0.2% of the time, recipients asking about a gift card 0.8%, and mobile signups 0 of 72. Recipients go straight to support.</li>
+      <li>Score the rest with a logistic regression trained on past leads. It gives each lead a probability of reaching $10K, based on 12 fields led by stated volume, job title, use case and company size.</li>
+      <li>Route and grade. The top 30% of scores go to sales (A), the next 30% to the watch list (B), and the rest to self-serve (C). Each lead gets a rep line with the next step and the two fields that moved its score most.</li>
+    </ol>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Grade</th><th>Follow-up</th><th class="n">Reached $10K*</th><th class="n">Placed an order*</th><th class="n">Of the 490</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag top">A</span></td><td>Rep call within a day</td><td class="n">50.0%</td><td class="n">64.7%</td><td class="n">112</td></tr>
+          <tr><td><span class="tag">B</span></td><td>Self-serve; rep reaches out after a first order</td><td class="n">32.6%</td><td class="n">42.7%</td><td class="n">94</td></tr>
+          <tr><td><span class="tag">C</span></td><td>Self-serve onboarding</td><td class="n">5.7%</td><td class="n">9.3%</td><td class="n">178</td></tr>
+          <tr><td><span class="tag">D</span></td><td>Filtered: nurture, or support for recipients</td><td class="n">0.9%</td><td class="n">1.8%</td><td class="n">106</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted">*On the Apr–Sep 2024 test leads.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Lead</th><th>Grade</th><th>Rep line</th></tr></thead>
+        <tbody>
+          <tr><td>L101248</td><td><span class="tag top">A</span></td><td>Call within a day. Why: use case: research compensation; Demand Generation Manager.</td></tr>
+          <tr><td>L100347</td><td><span class="tag">B</span></td><td>Self-serve for now; reach out after a first order. Why: 269 employees; Head of Growth Marketing.</td></tr>
+          <tr><td>L100961</td><td><span class="tag">C</span></td><td>Self-serve onboarding, no rep. Held back by: no job title; says &lt;$10K a year.</td></tr>
+          <tr class="tpl"><td><code>{lead_id}</code></td><td><code>{A|B|C}</code></td><td><code>{next step}</code>. <code>{Why | Held back by}</code>: <code>{top field 1}</code>; <code>{top field 2}</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A regular expression reads the lead notes and a template writes the rep lines, so the build makes no LLM calls and costs nothing to run. Tool choices are in Appendix B.</p>
+  </section>
+
+  <section class="block" id="results">
+    <h2>Waterfall vs. HubSpot's grade</h2>
+    <p>I tested on 477 leads from Apr–Sep 2024 that the model never saw during training. 106 of them reached $10K.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Who gets sent to sales</th><th class="n">Leads sent (per month)</th><th class="n">Reached $10K</th><th class="n">% of sent that reached $10K</th><th class="n">% of all 106 $10K leads</th></tr></thead>
+        <tbody>
+          <tr><td>HubSpot MQL (A1, A2, B1)</td><td class="n">118 (19.7)</td><td class="n">45</td><td class="n">38.1%</td><td class="n">42.5%</td></tr>
+          <tr><td>Simple rule: stated $10K+ a year</td><td class="n">124 (20.7)</td><td class="n">60</td><td class="n">48.4%</td><td class="n">56.6%</td></tr>
+          <tr><td>Waterfall, top 118 (matches HubSpot)</td><td class="n">118 (19.7)</td><td class="n">63</td><td class="n">53.4%</td><td class="n">59.4%</td></tr>
+          <tr><td>Waterfall, grade A (top 30%)</td><td class="n">136 (22.7)</td><td class="n">68</td><td class="n">50.0%</td><td class="n">64.2%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The simple rule sends any lead that passes the filter and stated $10K or more a year. That one question already beats HubSpot, 60 good leads to 45. The waterfall adds 3 more at the same volume, and 8 more at the grade A cutoff. Method in Appendix D.</p>
+    <p>To find HubSpot's 45 good leads, the waterfall sends 60 leads instead of 118. It found more good leads than HubSpot in 99.6% of 2,000 resamples of the test months.</p>
+    <p>On the 490, it sends sales 112 leads where HubSpot would send 121, and the two agree on 62. If the 490 behave like the test months, the A grade holds about 56 good leads and HubSpot's MQLs about 46.</p>
+  </section>
+
+  <section class="block" id="why">
+    <h2>Why it works</h2>
+    <p>HubSpot's number comes from the lead's first action, and its letter mostly tracks whether the company record is filled in. B1 and B2 leads reached $10K at almost the same rate (26.2% and 25.6%), but only B1 becomes an MQL. Of the 222 good leads HubSpot never sent, 187 were B2s.</p>
+    <p>The waterfall scores what a lead says about its size. Leads that stated $10K or more a year reached $10K 45–52% of the time, against 19.8% overall. More signals in Appendix E.</p>
+    <p>What could make these results look too good:</p>
+    <ul class="plain">
+      <li>The target account list was exported after these outcomes, so I left it out. With it, the test finds 91 good leads instead of 63, which is too good to trust.</li>
+      <li>No column shows which leads sales worked, so I can't measure what a rep adds.</li>
+      <li>I chose the filter rules after seeing all 2,015 leads. In the test months, filtered leads still rarely bought (1 good lead of 112).</li>
+      <li>Mobile signups rose from 3.6% to 9.4% of leads. If mobile tracking changed, recheck the mobile filter.</li>
+      <li>The data is synthetic, so some patterns may be planted.</li>
+    </ul>
+  </section>
+
+  <section class="block" id="next">
+    <h2>Rollout and next tests</h2>
+    <p>On the 490, the A cutoff sends 16 leads a month, close to HubSpot's 17. If sales has room for more, lower the cutoff; the ranking doesn't change.</p>
+    <p>The watch list holds self-serve accounts that may grow. Demo requesters and signups place a first order at similar rates (35.3% and 32.9%), so the first order is the signal to look again. The data has no order amounts, so I couldn't test that re-score.</p>
+    <p>A good lead can take 18 months to show, so I'd judge the rollout on first orders within 6 months. In the test months, first orders ranked the two systems the same way $10K did.</p>
+    <ol class="plain">
+      <li>Month 1: log both grades, route as today, and ask reps if the rep lines help.</li>
+      <li>Months 2–7: sales works every lead either system sends, about 24 a month. Compare the leads only one system sends. In the test months, waterfall-only leads ordered 56.8% of the time, HubSpot-only 30.4%.</li>
+      <li>Give a random 1 in 5 B leads a rep call, to measure what a rep adds.</li>
+      <li>Add ad platform once its leads have outcomes. It's filled on 17% of the 490 and no past leads.</li>
+    </ol>
+    <p class="muted">What I'd need from Tremendous: sales-accepted and meeting-held fields in HubSpot, first-order date and amount, and rep time per lead.</p>
+  </section>
+
+  <section class="block" id="appendix">
+    <h2>Appendix</h2>
+
+    <details class="toggle-block" id="app-build">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>A. The build</summary>
+      <div class="body">
+        <p>Python scripts, run in order. Code and outputs are in the <a href="https://github.com/woodysrw/mql-scoring-challenge">GitHub repo</a>. The input data is Tremendous's MQL Scoring Challenge Data sheet. Download its two tabs as CSV to <code>data/past_leads.csv</code> and <code>data/newer_leads.csv</code>.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>File</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/clean.py">clean.py</a></td><td>Shared cleanup and features: source and country spellings, title seniority, note intent and dollar volume</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/00_profile.py">00_profile.py</a></td><td>Fill rate and values for every column</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01_grade_reverse.py">01_grade_reverse.py</a>, <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01b_letter_ab.py">01b_letter_ab.py</a></td><td>How HubSpot sets its letter and number</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/02_levers.py">02_levers.py</a></td><td>Hit rate by field, and which field groups add signal</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/03_checks.py">03_checks.py</a></td><td>Target account leak and missed good leads</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/04_waterfall_eval.py">04_waterfall_eval.py</a></td><td>Trains before Apr 2024, tests Apr–Sep 2024 against HubSpot</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_drift.py">05_drift.py</a></td><td>Checks the 490 against past leads: fill rates, mix, new values, note formats</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_grade.py">05_grade.py</a></td><td>Refits on all past leads, grades the 490 and writes the rep lines</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre class="log">pip install pandas scipy scikit-learn statsmodels
+python build/04_waterfall_eval.py data/past_leads.csv
+python build/05_drift.py data/past_leads.csv data/newer_leads.csv
+python build/05_grade.py data/past_leads.csv data/newer_leads.csv   # writes out/grades.csv</pre>
+      </div>
+    </details>
+
+    <details class="toggle-block" id="app-tools">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>B. Tools and why</summary>
+      <div class="body">
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Part of the problem</th><th>Used</th><th>Why</th><th>Rejected</th></tr></thead>
+            <tbody>
+              <tr><td>Read lead notes</td><td>Regular expression</td><td>Notes follow a few templates; it pulls intent and the dollar figure at no cost</td><td>One LLM call per note</td></tr>
+              <tr><td>Score and grade</td><td>Logistic regression</td><td>Each weight can be read and checked; enough for 2,015 rows</td><td>Gradient boosting</td></tr>
+              <tr><td>Rep line</td><td>Template from the model's top two reasons</td><td>Free, same output every run, and it reads fine</td><td>One LLM call per lead</td></tr>
+              <tr><td>Running it in HubSpot</td><td>Score in Python, write grade and rep line to HubSpot properties, route with a workflow</td><td>The model stays testable outside HubSpot; reps see the grade where they work</td><td>Hand-set HubSpot score points</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>No paid tools. With more budget, I'd add an enrichment tool to fill company size, which is blank on 36% of the 490.</p>
+      </div>
+    </details>
+
+    <details class="toggle-block" id="app-hubspot">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>C. How HubSpot grades leads today</summary>
+      <div class="body">
+        <p>The number follows conversion type on all 2,015 leads. Demo requests, booked meetings and conference scans get a 1; signups, chats and emails a 2; content and events a 3.</p>
+        <p>The letter leans on data completeness. Leads with no employee count get a C 85% of the time, free-email leads 95%. It still sorts leads well (A 41.8%, B 25.1%, C 1.9% reached $10K).</p>
+        <p>33.6% of A1, A2 and B1 leads reached $10K (177 of 527). 55.6% of the leads that reached $10K were never MQLs.</p>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Half-year</th><th class="n">Leads</th><th class="n">MQLs</th><th class="n">MQLs that reached $10K</th><th class="n">All leads that reached $10K</th></tr></thead>
+            <tbody>
+              <tr><td>2022 H2</td><td class="n">208</td><td class="n">46</td><td class="n">43.5%</td><td class="n">20.2%</td></tr>
+              <tr><td>2023 H1</td><td class="n">478</td><td class="n">156</td><td class="n">29.5%</td><td class="n">19.9%</td></tr>
+              <tr><td>2023 H2</td><td class="n">570</td><td class="n">147</td><td class="n">33.3%</td><td class="n">17.5%</td></tr>
+              <tr><td>2024 H1</td><td class="n">500</td><td class="n">101</td><td class="n">31.7%</td><td class="n">21.2%</td></tr>
+              <tr><td>2024 H2</td><td class="n">259</td><td class="n">77</td><td class="n">39.0%</td><td class="n">21.6%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted">2024 H2 covers Jul–Sep only.</p>
+      </div>
+    </details>
+
+    <details class="toggle-block" id="app-test">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>D. How the test was run</summary>
+      <div class="body">
+        <ul class="plain">
+          <li>Split by time: trained on leads before Apr 2024 and tested on Apr–Sep 2024, the way the grade will be used.</li>
+          <li>Split by company: companies that appear in the test months were dropped from training, so the model can't score a lead by recognizing its company.</li>
+          <li>Compared at the same volume: each system sends 118 test leads, so a higher hit rate can't come from sending fewer.</li>
+          <li>Fixed the cutoffs in advance from training scores: A is the top 30% of unfiltered training leads (score 0.296 or higher), B the next 30%. They were applied unchanged to the test months.</li>
+          <li>Resampled the test leads 2,000 times to see how often the waterfall still wins. The gain ranged from 5 to 32 extra good leads in 95% of resamples.</li>
+          <li>The grades for the 490 come from the same setup refit on all 2,015 past leads, so the shipped weights differ slightly from the tested ones.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="toggle-block" id="app-channel">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>E. Signals and channels</summary>
+      <div class="body">
+        <div class="tbl">
+          <table>
+            <thead><tr><th>Signal</th><th class="n">Leads</th><th class="n">Reached $10K</th></tr></thead>
+            <tbody>
+              <tr><td>Stated $10K or more a year, picklist or note</td><td class="n">—</td><td class="n">45–52%</td></tr>
+              <tr><td>Research compensation use case, $10K–$100K volume</td><td class="n">49</td><td class="n">61.2%</td></tr>
+              <tr><td>Manager or lead title (known company, work email)</td><td class="n">202</td><td class="n">46.0%</td></tr>
+              <tr><td>First action was a test reward send</td><td class="n">70</td><td class="n">41.4%</td></tr>
+              <tr><td>Company with 51–200 employees</td><td class="n">265</td><td class="n">36.6%</td></tr>
+              <tr><td>All past leads</td><td class="n">2,015</td><td class="n">19.8%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="plain">
+          <li>Paid search leads reached $10K 27.5% of the time (578 leads). Paid social 3.1% (32 leads).</li>
+          <li>Conference leads 21.3% (47), about average. Webinar signups 9.1% (33).</li>
+          <li>Content downloads 33.9% (56 leads).</li>
+          <li>Research compensation use case 43.2% (190 leads).</li>
+          <li>Chats 2.4% (289 leads), though HubSpot scores them like a signup.</li>
+          <li>"How did you hear about us?" is answered by 10% of leads, who reached $10K 49.6% (search engine) to 60.0% (word of mouth) of the time. Worth testing as a required field on half of signups.</li>
+        </ul>
+        <p>In the 490, LinkedIn ads put 1 of 28 leads in A, and Google Ads 12 of 46. These are grades, with no outcomes yet. Ad platform also credits a different touch than lead source: only 10 of the 46 Google Ads leads have source "Paid Search".</p>
+      </div>
+    </details>
+
+    <details class="toggle-block" id="app-log">
+      <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>F. Process log</summary>
+      <div class="body">
+        <p>Every finding, decision and caveat, timestamped as it happened: <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/process-log.txt">process-log.txt</a>.</p>
+      </div>
+    </details>
+  </section>
+</main>
+
+<!-- ============================ PRESENT ============================ -->
+<main class="present wrap" id="present" hidden>
+  <div class="slide" data-slide data-note="15 minutes: today's MQLs, the model, channels, one ask.">
+    <h2>Lead scoring model</h2>
+    <p class="big">Spencer Wood · November 14, 2026</p>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Thresholds were set by hand and never retrained on outcomes.">
+    <h2>Today's MQLs</h2>
+    <p class="big">33.6% of A1, A2 and B1 leads reached $10K. 55.6% of the leads that reached $10K were never MQLs.</p>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="The target is first-year send volume, so the useful signals predict spend.">
+    <h2>The target</h2>
+    <p class="big">First order within 6 months, then $10K within the next 12. Most companies get there without talking to a rep.</p>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Strongest signals: stated volume of $10K or more, manager titles, research use case, test reward sends.">
+    <h2>How it works</h2>
+    <div class="flow">
+      <div class="step"><b>Lead comes in</b><span>Form, chat, event</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Filter out</b><span>Free email, recipients, mobile</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Score</b><span>Learned from past leads</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Route</b><span>Sales, watch list, self-serve</span></div>
+      <div class="arrow" aria-hidden="true"><svg><use href="#i-arrow"/></svg></div>
+      <div class="step"><b>Grade</b><span>Who follows up and why</span></div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Apr–Sep 2024, 477 leads the model never saw. Same number of leads sent: 63 good leads instead of 45.">
+    <h2>Results on recent leads</h2>
+    <div class="tbl">
+      <table>
+        <thead><tr><th></th><th class="n">HubSpot today</th><th class="n">Model</th></tr></thead>
+        <tbody>
+          <tr><td>% of sent that reached $10K</td><td class="n">38.1%</td><td class="n">53.4%</td></tr>
+          <tr><td>% of all $10K leads sent</td><td class="n">42.5%</td><td class="n">59.4%</td></tr>
+          <tr><td>Leads to sales per month</td><td class="n">19.7</td><td class="n">19.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Each line gives the reason and the next step.">
+    <h2>Example rep lines</h2>
+    <div class="repline">A · Call within a day. Why: use case: research compensation; Demand Generation Manager.</div>
+    <div class="repline">B · Self-serve for now; reach out after a first order. Why: 269 employees; Head of Growth Marketing.</div>
+    <div class="repline">C · Self-serve onboarding, no rep. Held back by: no job title; says &lt;$10K a year.</div>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="One finding per team, each with a number. Drop teams the data says nothing about.">
+    <h2>By channel</h2>
+    <div class="teams">
+      <div class="team"><b>Paid</b><span>Paid search leads reached $10K 27.5% of the time. Paid social 3.1% (32 leads).</span></div>
+      <div class="team"><b>Events</b><span>Conference leads 21.3% (47), about average. Webinar signups 9.1% (33).</span></div>
+      <div class="team"><b>Content</b><span>Content downloads 33.9% (56 leads), above the 19.8% average.</span></div>
+      <div class="team"><b>Product marketing</b><span>Research compensation 43.2%. With $10K–$100K volume, 61.2%.</span></div>
+      <div class="team"><b>Brand</b><span>Word of mouth 60.0% (40 leads), but 90% skip "How did you hear about us?"</span></div>
+    </div>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Retrain on new outcomes every quarter.">
+    <h2>Next tests</h2>
+    <ol class="plain big">
+      <li>Require "How did you hear about us?" for half of signups</li>
+      <li>Re-score self-serve accounts on their first order</li>
+    </ol>
+    <p class="big">The data doesn't show which leads sales worked, so we know the grade predicts good leads. We don't yet know what a rep adds.</p>
+  </div>
+
+  <div class="slide" data-slide hidden data-note="Then open it up for questions.">
+    <h2>The ask</h2>
+    <p class="big">Run the model next to the current HubSpot grades for 4 weeks. Compare which leads sales accepts and which ones place a first order.</p>
+    <p class="muted">Write-up, grades and build files: this page, Read mode, Appendix A.</p>
+  </div>
+
+  <p class="note" id="speaker" aria-live="polite"></p>
+
+  <nav class="slidenav" aria-label="Slides">
+    <button type="button" id="prev"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow"/></svg>Back</button>
+    <span class="count" id="count" aria-live="polite">1 / 9</span>
+    <button type="button" id="next">Next<svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  </nav>
+</main>
+
+<script>
+(function () {
+  var body = document.body;
+  var notes = document.getElementById("notes-toggle");
+  var read = document.getElementById("read");
+  var present = document.getElementById("present");
+  var slides = Array.prototype.slice.call(document.querySelectorAll("[data-slide]"));
+  var count = document.getElementById("count");
+  var speaker = document.getElementById("speaker");
+  var prev = document.getElementById("prev");
+  var next = document.getElementById("next");
+  var i = 0;
+
+  function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+  // Build notes switch
+  if (load("writeup-notes") === "off") notes.checked = false;
+  function applyNotes() { body.classList.toggle("notes", notes.checked); }
+  notes.addEventListener("change", function () { applyNotes(); store("writeup-notes", notes.checked ? "on" : "off"); });
+  applyNotes();
+
+  // Slides; the current slide's note shows under it
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function (s, k) { s.hidden = k !== i; });
+    count.textContent = (i + 1) + " / " + slides.length;
+    speaker.textContent = slides[i].dataset.note || "";
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+  }
+  prev.addEventListener("click", function () { show(i - 1); });
+  next.addEventListener("click", function () { show(i + 1); });
+  document.addEventListener("keydown", function (e) {
+    if (present.hidden) return;
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); show(i + 1); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); show(i - 1); }
+  });
+
+  // Mode, routed on #read / #present
+  function setMode(m) {
+    var isPresent = m === "present";
+    read.hidden = isPresent;
+    present.hidden = !isPresent;
+    document.querySelectorAll(".modes button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.mode === m));
+    });
+    if (isPresent) show(i);
+  }
+  document.querySelectorAll(".modes button").forEach(function (b) {
+    b.addEventListener("click", function () { location.hash = b.dataset.mode; });
+  });
+  function route() { setMode(location.hash === "#present" ? "present" : "read"); }
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>
