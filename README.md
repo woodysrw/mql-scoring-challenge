@@ -6,7 +6,8 @@ A three-step lead waterfall for Tremendous's GTM Engineer take-home. It filters 
 
 | File | What it is |
 |---|---|
-| [`out/grades.csv`](out/grades.csv) | Grade and rep line for each of the 490 newer leads |
+| [Grades sheet](https://docs.google.com/spreadsheets/d/1NOZSrTFMm-xk71IV4JOopaQi1iQQnG1yD0W-p6gN1K4/edit?usp=sharing) | Grade and rep line for each of the 490 newer leads, sorted A to D (Google Sheet, view only) |
+| [`out/grades.csv`](out/grades.csv) | The same grades as written by `05_grade.py` |
 | [`build/`](build/) | Python scripts that produce the analysis and the grades |
 | [`out/*.txt`](out/) | Script output behind every number in the write-up |
 | [`process-log.txt`](process-log.txt) | Findings, decisions and caveats, logged as the work happened |
