@@ -238,7 +238,7 @@ main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 
   </div>
 
   <section class="block" id="summary" aria-label="Summary">
-    <p>I built a three-step lead waterfall. It filters out leads that almost never buy, scores the rest, and sends each one to sales or tags it for a watch list or self-serve. On the last six months of past leads, held out from training, it found 63 good leads where HubSpot's MQL rule found 45. Both sent sales 118 leads. All 490 newer leads are graded, each with a rep line, in <a href="https://docs.google.com/spreadsheets/d/1NOZSrTFMm-xk71IV4JOopaQi1iQQnG1yD0W-p6gN1K4/edit?usp=sharing">this Google Sheet</a>.</p>
+    <p>I built a three-step lead waterfall. It filters out leads that almost never buy, scores the rest, and sends each one to sales or tags it for a watch list or self-serve. On the last six months of past leads, held out from training, it found 63 good leads where HubSpot's MQL rule found 45. Both sent sales 118 leads. All 490 newer leads are graded, each with a rep line, in <a href="https://docs.google.com/spreadsheets/d/1NOZSrTFMm-xk71IV4JOopaQi1iQQnG1yD0W-p6gN1K4/edit?usp=sharing" target="_blank" rel="noopener">this Google Sheet</a>.</p>
   </section>
 
   <section class="block" id="built">
@@ -334,19 +334,19 @@ main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 
     <details class="toggle-block" id="app-build">
       <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>A. The build</summary>
       <div class="body">
-        <p>Python scripts, run in order. Code and outputs are in the <a href="https://github.com/woodysrw/mql-scoring-challenge">GitHub repo</a>. The input data is Tremendous's MQL Scoring Challenge Data sheet. Download its two tabs as CSV to <code>data/past_leads.csv</code> and <code>data/newer_leads.csv</code>.</p>
+        <p>Python scripts, run in order. Code and outputs are in the <a href="https://github.com/woodysrw/mql-scoring-challenge" target="_blank" rel="noopener">GitHub repo</a>. The input data is Tremendous's MQL Scoring Challenge Data sheet. Download its two tabs as CSV to <code>data/past_leads.csv</code> and <code>data/newer_leads.csv</code>.</p>
         <div class="tbl">
           <table>
             <thead><tr><th>File</th><th>What it does</th></tr></thead>
             <tbody>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/clean.py">clean.py</a></td><td>Shared cleanup and features: source and country spellings, title seniority, note intent and dollar volume</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/00_profile.py">00_profile.py</a></td><td>Fill rate and values for every column</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01_grade_reverse.py">01_grade_reverse.py</a>, <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01b_letter_ab.py">01b_letter_ab.py</a></td><td>How HubSpot sets its letter and number</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/02_levers.py">02_levers.py</a></td><td>Hit rate by field, and which field groups add signal</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/03_checks.py">03_checks.py</a></td><td>Target account leak and missed good leads</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/04_waterfall_eval.py">04_waterfall_eval.py</a></td><td>Trains before Apr 2024, tests Apr–Sep 2024 against HubSpot</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_drift.py">05_drift.py</a></td><td>Checks the 490 against past leads: fill rates, mix, new values, note formats</td></tr>
-              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_grade.py">05_grade.py</a></td><td>Refits on all past leads, grades the 490 and writes the rep lines</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/clean.py" target="_blank" rel="noopener">clean.py</a></td><td>Shared cleanup and features: source and country spellings, title seniority, note intent and dollar volume</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/00_profile.py" target="_blank" rel="noopener">00_profile.py</a></td><td>Fill rate and values for every column</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01_grade_reverse.py" target="_blank" rel="noopener">01_grade_reverse.py</a>, <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/01b_letter_ab.py" target="_blank" rel="noopener">01b_letter_ab.py</a></td><td>How HubSpot sets its letter and number</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/02_levers.py" target="_blank" rel="noopener">02_levers.py</a></td><td>Hit rate by field, and which field groups add signal</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/03_checks.py" target="_blank" rel="noopener">03_checks.py</a></td><td>Target account leak and missed good leads</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/04_waterfall_eval.py" target="_blank" rel="noopener">04_waterfall_eval.py</a></td><td>Trains before Apr 2024, tests Apr–Sep 2024 against HubSpot</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_drift.py" target="_blank" rel="noopener">05_drift.py</a></td><td>Checks the 490 against past leads: fill rates, mix, new values, note formats</td></tr>
+              <tr><td><a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/build/05_grade.py" target="_blank" rel="noopener">05_grade.py</a></td><td>Refits on all past leads, grades the 490 and writes the rep lines</td></tr>
             </tbody>
           </table>
         </div>
@@ -442,7 +442,7 @@ python build/05_grade.py data/past_leads.csv data/newer_leads.csv   # writes out
     <details class="toggle-block" id="app-log">
       <summary><svg aria-hidden="true"><use href="#i-tri"/></svg>F. Process log</summary>
       <div class="body">
-        <p>Every finding, decision and caveat, timestamped as it happened: <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/process-log.txt">process-log.txt</a>.</p>
+        <p>Every finding, decision and caveat, timestamped as it happened: <a href="https://github.com/woodysrw/mql-scoring-challenge/blob/main/process-log.txt" target="_blank" rel="noopener">process-log.txt</a>.</p>
       </div>
     </details>
   </section>
