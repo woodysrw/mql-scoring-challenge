@@ -304,7 +304,7 @@ main.present { display: flex; flex-direction: column; gap: 12px; padding-block: 
   <section class="block" id="why">
     <h2>Why it works</h2>
     <p>HubSpot's number comes from the lead's first action, and its letter mostly tracks whether the company record is filled in. B1 and B2 leads reached $10K at almost the same rate (26.2% and 25.6%), but only B1 becomes an MQL. Of the 222 good leads HubSpot never sent, 187 were B2s.</p>
-    <p>The waterfall scores what a lead says about its size. Leads that stated $10K or more a year reached $10K 45–52% of the time, against 19.8% overall. More signals in Appendix E.</p>
+    <p>The waterfall scores what a lead says about its size. Leads that stated $10K or more a year reached $10K 46.8% of the time (464 leads), against 19.8% overall. More signals in Appendix E.</p>
     <p>What could make these results look too good:</p>
     <ul class="plain">
       <li>The target account list was exported after these outcomes, so I left it out. With it, the test finds 91 good leads instead of 63, which is too good to trust.</li>
@@ -419,7 +419,7 @@ python build/05_grade.py data/past_leads.csv data/newer_leads.csv   # writes out
           <table>
             <thead><tr><th>Signal</th><th class="n">Leads</th><th class="n">Reached $10K</th></tr></thead>
             <tbody>
-              <tr><td>Stated $10K or more a year, picklist or note</td><td class="n">—</td><td class="n">45–52%</td></tr>
+              <tr><td>Stated $10K or more a year, picklist or note</td><td class="n">464</td><td class="n">46.8%</td></tr>
               <tr><td>Research compensation use case, $10K–$100K volume</td><td class="n">49</td><td class="n">61.2%</td></tr>
               <tr><td>Manager or lead title (known company, work email)</td><td class="n">202</td><td class="n">46.0%</td></tr>
               <tr><td>First action was a test reward send</td><td class="n">70</td><td class="n">41.4%</td></tr>
